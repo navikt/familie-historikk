@@ -1,0 +1,60 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: familie-historikk
+  namespace: teamfamilie
+  labels:
+    team: teamfamilie
+spec:
+  image: { { image } }
+    team: teamfamilie
+    port: 8050
+  liveness:
+    path: /internal/status/isAlive
+    initialDelay: 30
+    failureThreshold: 10
+    readiness:
+      path: /internal/status/isAlive
+      initialDelay: 30
+      failureThreshold: 10
+    prometheus:
+      enabled: true
+      path: /internal/prometheus
+  vault:
+    enabled: false
+  gcp: # Database
+    sqlInstances:
+      - type: POSTGRES_12
+        databases:
+          - name: familie-historikk
+          - envVarPrefix: DB
+  kafka: # Kafka
+    pool: nav-dev
+
+  azure:
+    application:
+      enabled: true
+      tenant: trygdeetaten.no
+    accessPolicy:
+      inbound:
+        rules:
+          - application: familie-tilbake-frontend
+            namespace: teamfamilie
+  replicas:
+    min: 2
+    max: 4
+    cpuThresholdPercentage: 50
+    resources:
+      limits:
+        memory: 1024Mi
+        cpu: "1"
+      requests:
+        memory: 512Mi
+        cpu: 500m
+    ingresses:
+      - https://familie-historikk.dev.intern.nav.no
+    secureLogs:
+      enabled: true
+    env:
+      - name: SPRING_PROFILES_ACTIVE
+        value: dev
