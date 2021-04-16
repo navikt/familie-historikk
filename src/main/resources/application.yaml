@@ -16,8 +16,12 @@ spring:
   main:
     allow-bean-definition-overriding: true
   flyway:
-    enabled: true
+    enabled: false
   datasource:
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/familie-historikk-dev
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
     hikari:
       maximum-pool-size: 2
       connection-test-query: "select 1"
@@ -29,8 +33,17 @@ no.nav.security.jwt:
   issuer.azuread:
     discoveryurl: ${AZUREAD_DISCOVERY_URL}
     accepted_audience: ${AZURE_APP_CLIENT_ID}
-    proxyurl: http://webproxy-nais.nav.no:8088
     cookie_name: azure_token
+  client:
+    registration:
+      familie-tilbake-frontend:
+        resource-url: ${FAMILIE_TILBAKE_FRONTEND_URL}
+        token-endpoint-url: ${AZUREAD_TOKEN_ENDPOINT_URL}
+        grant-type: urn:ietf:params:oauth:grant-type:jwt-bearer
+        authentication:
+          client-id: ${AZURE_APP_CLIENT_ID}
+          client-secret: ${AZURE_APP_CLIENT_SECRET}
+          client-auth-method: client_secret_basic
 
 management:
   endpoint.health.show-details: always
@@ -62,4 +75,9 @@ kafka:
     truststorePath: ${KAFKA_TRUSTSTORE_PATH:/dev/zero}
     credstorePassword: ${KAFKA_CREDSTORE_PASSWORD:pwd}
 
-AZUREAD_DISCOVERY_URL: https://login.microsoftonline.com/navno.onmicrosoft.com/v2.0/.well-known/openid-configuration
+AZUREAD_DISCOVERY_URL: https://login.microsoftonline.com/navq.onmicrosoft.com/v2.0/.well-known/openid-configuration
+AZUREAD_TOKEN_ENDPOINT_URL: https://login.microsoftonline.com/navq.onmicrosoft.com/oauth2/v2.0/token
+FAMILIE_TILBAKE_FRONTEND_URL: https://familie-tilbake-frontend.${ON_PREM_URL_ENV}.intern.nav.no
+
+ACCEPTED_CLIENTS: ${FAMILIE_TILBAKE_FRONTEND_CLIENT_ID}
+

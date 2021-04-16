@@ -16,5 +16,8 @@ spec:
     retentionHours: 72  # -1 means unlimited
   acl:
     - team: teamfamilie
-      application: familie-tilbake
-      access: readwrite   # read, write, readwrite
+      application: familie-historikk #owner
+      access: readwrite   # readwrite
+    - team: teamfamilie
+      application: familie-tilbake #owner
+      access: write   # readwrite

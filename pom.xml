@@ -43,7 +43,12 @@
         <swagger.version>3.0.0</swagger.version>
 
     </properties>
-
+    <repositories>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/navikt/familie-felles</url>
+        </repository>
+    </repositories>
     <dependencies>
         <!-- Spring Boot -->
         <dependency>
@@ -148,11 +153,6 @@
         </dependency>
 
         <!-- NAV interne avhengigheter-->
-        <dependency>
-            <groupId>no.nav.security</groupId>
-            <artifactId>token-validation-spring</artifactId>
-            <version>${nav.security.version}</version>
-        </dependency>
         <dependency>
             <groupId>no.nav.security</groupId>
             <artifactId>token-validation-test-support</artifactId>

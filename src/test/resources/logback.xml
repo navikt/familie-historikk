@@ -8,5 +8,4 @@
 
 
     <logger name="no" level="DEBUG"/>
-    <logger name="no.nav.familie.prosessering.internal.TaskStepExecutorService" level="INFO" />
 </configuration>
