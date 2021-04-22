@@ -12,7 +12,8 @@ class HistorikkinnslagKafkaListener {
     private val logger = LoggerFactory.getLogger(this::class.java)
 
     @KafkaListener(id = "familie-historikk",
-                   topics = ["historikk-topikk"])
+                   topics = ["teamfamilie.historikk-topikk"],
+                   containerFactory = "concurrentKafkaListenerContainerFactory")
     fun listen(consumerRecord: ConsumerRecord<String, String>, ack: Acknowledgment) {
         logger.info("Data mottatt i kafka $consumerRecord")
     }

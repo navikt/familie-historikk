@@ -28,28 +28,8 @@ spring:
       max-lifetime: 30000
       minimum-idle: 1
       data-source-properties.stringtype: unspecified # Nødvendig for å kunde sende en String til et json-felt i PostgresSql
-  kafka:
-    bootstrapServers: ${KAFKA_BROKERS:localhost}
-    properties:
-      securityProtocol: SSL
-      registryUser: ${KAFKA_SCHEMA_REGISTRY_USER:user}
-      registryPassword: ${KAFKA_SCHEMA_REGISTRY_PASSWORD:pwd}
-      certificate: ${KAFKA_CERTIFICATE:cert}
-      certificatePath: ${KAFKA_CERTIFICATE_PATH:/dev/zero}
-      privateKey: ${KAFKA_PRIVATE_KEY:key}
-      privateKeyPath: ${KAFKA_PRIVATE_KEY_PATH:/dev/zero}
-      ca: ${KAFKA_CA:ca}
-      caPath: ${KAFKA_CA_PATH}
-      keystorePath: ${KAFKA_KEYSTORE_PATH:/dev/zero}
-      truststorePath: ${KAFKA_TRUSTSTORE_PATH:/dev/zero}
-      credstorePassword: ${KAFKA_CREDSTORE_PASSWORD:pwd}
-    consumer:
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      group-id: srvfamilie-familie-historikk
-      max-poll-records: 1
-      auto-offset-reset: latest
-      enable-auto-commit: false
+
+
 
 no.nav.security.jwt:
   issuer.azuread:
@@ -78,8 +58,6 @@ management:
   health:
     db:
       enabled: true
-
-
 
 AZUREAD_DISCOVERY_URL: https://login.microsoftonline.com/navq.onmicrosoft.com/v2.0/.well-known/openid-configuration
 AZUREAD_TOKEN_ENDPOINT_URL: https://login.microsoftonline.com/navq.onmicrosoft.com/oauth2/v2.0/token
