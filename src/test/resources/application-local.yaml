@@ -4,3 +4,5 @@ spring:
     password: test
     url: jdbc:postgresql://localhost:5432/familie-historikk
     driver-class-name: org.postgresql.Driver
+
+FAMILIE_TILBAKE_FRONTEND_URL: http://localhost:8000
