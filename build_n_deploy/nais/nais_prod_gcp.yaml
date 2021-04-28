@@ -58,8 +58,8 @@ spec:
     enabled: true
   env:
     - name: SPRING_PROFILES_ACTIVE
-      value: prepod
+      value: prod
     - name: ENV
-      value: preprod
+      value: prod
     - name: APP_VERSION
       value: {{ VERSION }}
