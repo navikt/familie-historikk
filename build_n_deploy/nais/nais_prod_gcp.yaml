@@ -26,6 +26,9 @@ spec:
     sqlInstances:
       - type: POSTGRES_12
         name: familie-historikk
+        diskAutoresize: true
+        highAvailability: true
+        autoBackupTime: "03:00"
         databases:
           - name: familie-historikk
             envVarPrefix: DB
