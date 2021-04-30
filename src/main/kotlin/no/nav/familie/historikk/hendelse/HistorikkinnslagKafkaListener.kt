@@ -1,5 +1,6 @@
 package no.nav.familie.historikk.hendelse
 
+import no.nav.familie.historikk.common.Constants
 import org.apache.kafka.clients.consumer.ConsumerRecord
 import org.slf4j.LoggerFactory
 import org.springframework.context.annotation.Profile
@@ -14,7 +15,7 @@ class HistorikkinnslagKafkaListener {
     private val logger = LoggerFactory.getLogger(this::class.java)
 
     @KafkaListener(id = "familie-historikk",
-                   topics = ["teamfamilie.historikk-topikk"],
+                   topics = [Constants.topic],
                    containerFactory = "concurrentKafkaListenerContainerFactory")
     fun listen(consumerRecord: ConsumerRecord<String, String>, ack: Acknowledgment) {
         logger.info("Data mottatt i kafka $consumerRecord")
