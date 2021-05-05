@@ -45,6 +45,7 @@ class KafkaConfig(@Value("\${KAFKA_BROKERS:localhost}") private val kafkaBrokers
     fun consumerConfigs() = mapOf(
             ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG to StringDeserializer::class.java,
             ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG to StringDeserializer::class.java,
+            ConsumerConfig.AUTO_OFFSET_RESET_CONFIG to "earliest",
             CommonClientConfigs.RETRIES_CONFIG to 10,
             CommonClientConfigs.RETRY_BACKOFF_MS_CONFIG to 100
 
