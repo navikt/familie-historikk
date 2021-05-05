@@ -1,5 +1,6 @@
 package no.nav.familie.historikk.config
 
+import no.nav.familie.historikk.common.Constants
 import org.apache.kafka.clients.CommonClientConfigs
 import org.apache.kafka.clients.admin.NewTopic
 import org.apache.kafka.clients.consumer.ConsumerConfig
@@ -31,7 +32,7 @@ class KafkaLokalConfig {
     }
 
     @Bean fun topic(): NewTopic? {
-        return TopicBuilder.name("teamfamilie.historikk-topikk").partitions(1).replicas(1).build()
+        return TopicBuilder.name(Constants.topic).partitions(1).replicas(1).build()
     }
 
     @Bean
