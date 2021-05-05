@@ -33,7 +33,7 @@ spec:
           - name: familie-historikk
             envVarPrefix: DB
   kafka: # Kafka
-    pool: nav-dev
+    pool: nav-prod
 
   azure:
     application:
