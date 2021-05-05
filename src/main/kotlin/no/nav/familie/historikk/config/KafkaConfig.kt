@@ -17,7 +17,7 @@ import org.springframework.kafka.core.DefaultKafkaConsumerFactory
 
 @Configuration
 @EnableKafka
-@Profile("prepod")
+@Profile("prepod", "prod")
 class KafkaConfig(@Value("\${KAFKA_BROKERS:localhost}") private val kafkaBrokers: String,
                   @Value("\${KAFKA_SECURITY_PROTOCOL:SSL}") private val kafkaSecurityProtocol: String,
                   @Value("\${KAFKA_TRUSTSTORE_PATH}") private val kafkaTruststorePath: String,
