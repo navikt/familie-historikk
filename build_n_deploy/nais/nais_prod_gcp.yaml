@@ -26,6 +26,8 @@ spec:
     sqlInstances:
       - type: POSTGRES_12
         name: familie-historikk
+        diskAutoresize: true
+        highAvailability: true
         autoBackupTime: "03:00"
         databases:
           - name: familie-historikk
@@ -36,7 +38,7 @@ spec:
   azure:
     application:
       enabled: true
-      tenant: trygdeetaten.no
+        tenant: nav.no
   accessPolicy:
     inbound:
       rules:
@@ -59,8 +61,8 @@ spec:
     enabled: true
   env:
     - name: SPRING_PROFILES_ACTIVE
-      value: prepod
+      value: prod
     - name: ENV
-      value: preprod
+      value: prod
     - name: APP_VERSION
       value: {{ VERSION }}
