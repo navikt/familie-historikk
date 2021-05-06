@@ -25,7 +25,7 @@ import java.time.temporal.ChronoUnit
 
 @SpringBootConfiguration
 @ComponentScan(ApplicationConfig.pakkenavn, "no.nav.familie.sikkerhet")
-@EnableJwtTokenValidation(ignore = ["org.springframework", "springfox.documentation.swagger"])
+@EnableJwtTokenValidation(ignore = ["org.springframework", "springfox.documentation.swagger", "no.nav.familie.historikk.websockets"])
 @Import(RestTemplateAzure::class)
 @EnableOAuth2Client(cacheEnabled = true)
 @ConfigurationPropertiesScan
