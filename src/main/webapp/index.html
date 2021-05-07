@@ -45,9 +45,9 @@
 
 	        function sendMessage() {
 
-	        	var from = document.getElementById('from').value;
+	        	var from = document.getElementById('fra').value;
 	            var text = document.getElementById('text').value;
-	            stompClient.send("/app/historikk", {}, JSON.stringify({'from':from, 'text':text}));
+	            stompClient.send("/app/historikk", {}, JSON.stringify({'fra':from, 'text':text}));
 	        }
 
 	        function showMessageOutput(messageOutput) {
@@ -55,7 +55,7 @@
 	            var response = document.getElementById('response');
 	            var p = document.createElement('p');
 	            p.style.wordWrap = 'break-word';
-	            p.appendChild(document.createTextNode(messageOutput.from + ": " + messageOutput.text + " (" + messageOutput.time + ")"));
+	            p.appendChild(document.createTextNode(messageOutput.fra + ": " + messageOutput.text + " (" + messageOutput.time + ")"));
 	            response.appendChild(p);
 	        }
 
