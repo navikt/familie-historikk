@@ -45,9 +45,9 @@
 
 	        function sendMessage() {
 
-	        	var from = document.getElementById('fra').value;
+	        	var fra = document.getElementById('fra').value;
 	            var text = document.getElementById('text').value;
-	            stompClient.send("/app/historikk", {}, JSON.stringify({'fra':from, 'text':text}));
+	            stompClient.send("/app/historikk", {}, JSON.stringify({'fra':fra, 'text':text}));
 	        }
 
 	        function showMessageOutput(messageOutput) {
@@ -69,7 +69,7 @@
 		
 		
 			<div>
-				<input type="text" id="from" placeholder="Choose a nickname"/>
+				<input type="text" id="fra" placeholder="Choose a nickname"/>
 			</div>
 			<br />
 		    <div>

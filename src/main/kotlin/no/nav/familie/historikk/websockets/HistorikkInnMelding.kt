@@ -2,6 +2,6 @@ package no.nav.familie.historikk.websockets
 
 class HistorikkInnMelding {
 
-    val from: String? = null
+    val fra: String? = null
     val text: String? = null
 }

@@ -16,7 +16,7 @@ class SendTilBrukerController {
     @MessageMapping("/message")
     @SendToUser("/queue/reply") @Throws(Exception::class)
     fun processMessageFromClient(@Payload message: String?, principal: Principal?): String {
-        return gson.fromJson(message, MutableMap::class.java).get("name").toString()
+        return gson.fromJson(message, MutableMap::class.java).get("fra").toString()
     }
 
     @MessageExceptionHandler @SendToUser("/queue/errors") fun handleException(exception: Throwable): String? {

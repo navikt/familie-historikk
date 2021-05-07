@@ -13,6 +13,6 @@ class ChatController {
     @SendTo("/topic/messages") @Throws(Exception::class)
     fun send(message: HistorikkInnMelding): HistorikkUtMelding {
         val time = SimpleDateFormat("HH:mm").format(Date())
-        return HistorikkUtMelding(message.from!!, message.text!!, time)
+        return HistorikkUtMelding(message.fra!!, message.text!!, time)
     }
 }
