@@ -16,7 +16,7 @@ spring:
   main:
     allow-bean-definition-overriding: true
   flyway:
-    enabled: false
+    enabled: true
   datasource:
     url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/familie-historikk
     username: ${DB_USERNAME}
