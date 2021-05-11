@@ -16,8 +16,8 @@ CREATE TABLE historikkinnslag
     tittel            VARCHAR                             NOT NULL,
     tekst             VARCHAR,
     steg              VARCHAR,
-    journalpost_id     VARCHAR,
-    dokument_id        VARCHAR,
+    journalpost_id    VARCHAR,
+    dokument_id       VARCHAR,
     opprettet_av      VARCHAR      DEFAULT 'VL'           NOT NULL,
     opprettet_tid     TIMESTAMP(3) DEFAULT localtimestamp NOT NULL
 );
