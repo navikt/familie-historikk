@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS historikkinnslag;
 CREATE TABLE historikkinnslag
 (
     id                UUID PRIMARY KEY,
-    behandling_id     UUID                                NOT NULL,
+    behandling_id     VARCHAR                             NOT NULL,
     ekstern_fagsak_id VARCHAR                             NOT NULL,
     fagsystem         VARCHAR                             NOT NULL,
     applikasjon       VARCHAR                             NOT NULL,
