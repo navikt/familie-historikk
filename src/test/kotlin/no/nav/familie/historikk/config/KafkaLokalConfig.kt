@@ -22,7 +22,8 @@ import org.springframework.kafka.test.EmbeddedKafkaBroker
 class KafkaLokalConfig {
 
 
-    @Bean fun broker(): EmbeddedKafkaBroker? {
+    @Bean
+    fun broker(): EmbeddedKafkaBroker {
         return EmbeddedKafkaBroker(1)
                 .kafkaPorts(9092)
                 .brokerProperty("listeners", "PLAINTEXT://localhost:9092,REMOTE://localhost:9093")
@@ -31,7 +32,8 @@ class KafkaLokalConfig {
                 .brokerListProperty("spring.kafka.bootstrap-servers")
     }
 
-    @Bean fun topic(): NewTopic? {
+    @Bean
+    fun topic(): NewTopic {
         return TopicBuilder.name(Constants.topic).partitions(1).replicas(1).build()
     }
 
@@ -46,7 +48,10 @@ class KafkaLokalConfig {
         factory.setConcurrency(1)
         factory.consumerFactory = consumerFactory()
         println("concurrentKafkaListenerContainerFactory - " +
-                "BOOTSTRAP_SERVERS_CONFIG:${factory.consumerFactory.configurationProperties[ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG]} ")
+                "BOOTSTRAP_SERVERS_CONFIG:${
+                    factory.consumerFactory
+                            .configurationProperties[ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG]
+                } ")
         return factory
     }
 
