@@ -16,10 +16,11 @@ class HistorikkController {
 
     @GetMapping("/BA/123",  produces = [MediaType.TEXT_EVENT_STREAM_VALUE])
     private fun hentHistorikk(): Flux<String?> {
+        val tregFlux: Flux<String> = Flux.fromIterable(listOf("1","2","3", "4", "5", "6", "7")).delayElements(Duration.ofMillis(1000*180))
+        val raskFlux: Flux<String> = Flux.fromIterable(listOf("a", "b", "c")).delayElements(Duration.ofMillis(1000))
 
-       return  Flux.fromIterable(listOf("a", "b", "c")) //hent data fra postgres
-                .delayElements(Duration.ofMillis(1000))
-                //.doOnNext(kafkaservice::lyttPåeventsForBehandling) // lytt på nye eventer fra kafka
+        return Flux.concat(raskFlux,tregFlux)
+
     }
 }
 
