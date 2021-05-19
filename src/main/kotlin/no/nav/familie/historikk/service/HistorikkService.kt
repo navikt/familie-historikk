@@ -30,6 +30,6 @@ class HistorikkService(private val historikkinnslagRepository: HistorikkinnslagR
 
 
     fun hentHistorikkinnslag(applikasjon: Applikasjon, behandlingId: String): List<Historikkinnslag> {
-       return historikkinnslagRepository.findByBehandlingIdAAndApplikasjon(behandlingId, applikasjon)
+       return historikkinnslagRepository.findByBehandlingIdAndApplikasjon(behandlingId, applikasjon)
     }
 }

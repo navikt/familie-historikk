@@ -9,5 +9,5 @@ interface HistorikkinnslagRepository : RepositoryInterface<Historikkinnslag, UUI
 
     fun findByBehandlingId(behandlingId:String):List<Historikkinnslag>
 
-    fun findByBehandlingIdAAndApplikasjon(behandlingId:String, applikasjon:Applikasjon):List<Historikkinnslag>
+    fun findByBehandlingIdAndApplikasjon(behandlingId:String, applikasjon:Applikasjon):List<Historikkinnslag>
 }
