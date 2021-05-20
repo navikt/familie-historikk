@@ -10,14 +10,8 @@ import org.springframework.web.bind.annotation.RestController
 import reactor.core.publisher.Flux
 
 @RestController
-@RequestMapping("/historikk")
+@RequestMapping("/api/historikk")
 class HistorikkController(private val historikkService: HistorikkService) {
-
-    @GetMapping("/stream/{applikasjon}/{behandlingId}", produces = [MediaType.TEXT_EVENT_STREAM_VALUE])
-    private fun hentHistorikk(applikasjon: String, behandlingId: String): Flux<Historikkinnslag?> {
-        return Flux.fromIterable(historikkService.hentHistorikkinnslag(Applikasjon.valueOf(applikasjon),behandlingId))
-        //TODO plugg på eventlistener for kafka meldinger som kommer i ettertid
-    }
 
     @GetMapping("/{applikasjon}/{behandlingId}", produces = [MediaType.APPLICATION_JSON_VALUE])
     private fun hentHistorikk2(applikasjon: String, behandlingId: String): List<Historikkinnslag?> {
