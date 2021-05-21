@@ -47,6 +47,6 @@ class HistorikkService(private val historikkinnslagRepository: HistorikkinnslagR
                                 journalpostId = it.journalpostId,
                                 dokumentId = it.dokumentId,
                                 opprettetTid = it.opprettetTid)
-        }
+        }.sortedBy { it.opprettetTid }
     }
 }

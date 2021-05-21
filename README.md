@@ -24,9 +24,9 @@ CREATE DATABASE "familie-historikk";
 ```
 ### Autentisering
 Dersom man vil gjøre autentiserte kall mot andre tjenester, må man sette opp følgende miljø-variabler:
-* Client secret
-* Client id
-* Scope for den aktuelle tjenesten
+* Client secret- AZURE_APP_CLIENT_SECRET
+* Client id - AZURE_APP_CLIENT_ID
+* Scope for den aktuelle tjenesten - FAMILIE_TILBAKE_FRONTEND_CLIENT_ID
 
 Alle disse variablene finnes i applikasjonens mappe for preprod-fss på vault.
 Variablene legges inn under DevLauncher -> Edit Configurations -> Environment Variables.
