@@ -4,7 +4,6 @@ import no.nav.familie.historikk.api.HistorikkinnslagDto
 import no.nav.familie.historikk.domain.Historikkinnslag
 import no.nav.familie.historikk.domain.HistorikkinnslagRepository
 import no.nav.familie.kontrakter.felles.Applikasjon
-import no.nav.familie.kontrakter.felles.Fagsystem
 import no.nav.familie.kontrakter.felles.historikkinnslag.OpprettHistorikkinnslagRequest
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
