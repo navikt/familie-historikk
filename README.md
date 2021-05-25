@@ -14,6 +14,8 @@ Appen tilgjengeliggjøres da på `localhost:8050`.
 Dersom man vil kjøre med postgres, kan man bytte til Spring-profilen `postgres`.
 Da må man sette opp postgres-databasen, dette gjøres slik:
 ```
+# Den første kommandoen er kun hvis du bare kjører familie-historikk applikasjon
+# Ellers kan du unngå den og opprette bare database.
 docker run --name familie-historikk-postgres -e POSTGRES_PASSWORD=test -d -p 5432:5432 postgres
 docker ps (finn container id)
 docker exec -it <container_id> bash
