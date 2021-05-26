@@ -12,7 +12,7 @@ import org.springframework.kafka.annotation.EnableKafka
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory
 import org.springframework.kafka.core.ConsumerFactory
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory
-
+import org.springframework.kafka.listener.ContainerProperties
 
 
 @Configuration
@@ -36,6 +36,7 @@ class KafkaConfig(@Value("\${KAFKA_BROKERS:localhost}") private val kafkaBrokers
     fun concurrentKafkaListenerContainerFactory(): ConcurrentKafkaListenerContainerFactory<String, String> {
         val factory = ConcurrentKafkaListenerContainerFactory<String, String>()
         factory.setConcurrency(1)
+        factory.containerProperties.ackMode = ContainerProperties.AckMode.MANUAL
         factory.consumerFactory = consumerFactory()
         println("concurrentKafkaListenerContainerFactory - " +
                 "BOOTSTRAP_SERVERS_CONFIG:${factory.consumerFactory.configurationProperties[ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG]} ")
