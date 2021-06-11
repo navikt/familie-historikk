@@ -2,7 +2,6 @@ package no.nav.familie.historikk
 
 import no.nav.familie.historikk.common.Constants
 import no.nav.familie.historikk.consumer.HistorikkinnslagKafkaConsumer
-import no.nav.familie.historikk.domain.HistorikkinnslagRepository
 import no.nav.familie.kontrakter.felles.Applikasjon
 import no.nav.familie.kontrakter.felles.Fagsystem
 import no.nav.familie.kontrakter.felles.historikkinnslag.Aktør
@@ -13,6 +12,7 @@ import org.apache.kafka.clients.producer.ProducerRecord
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.kafka.core.KafkaTemplate
+import java.time.LocalDateTime
 import java.util.UUID
 import java.util.concurrent.TimeUnit
 import kotlin.test.assertEquals
@@ -35,6 +35,7 @@ internal class KafkaProducerTest : OppslagSpringRunnerTest() {
                                                      type = Historikkinnslagstype.HENDELSE,
                                                      aktør = Aktør.SAKSBEHANDLER,
                                                      aktørIdent = "Z0000",
+                                                     opprettetTidspunkt = LocalDateTime.now(),
                                                      tittel = "Behandling Opprettet")
         val producerRecord = ProducerRecord(Constants.topic,
                                             behandlingId,

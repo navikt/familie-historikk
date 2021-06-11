@@ -12,9 +12,9 @@ import no.nav.familie.kontrakter.felles.objectMapper
 import org.apache.kafka.clients.consumer.ConsumerRecord
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
+import java.time.LocalDateTime
 import java.util.UUID
 import kotlin.test.assertEquals
-import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
@@ -29,6 +29,7 @@ internal class HistorikkinnslagKafkaConsumerTest : OppslagSpringRunnerTest() {
     @Test
     fun `listen skal lagre historikkinnslag når mottatt gyldig melding`() {
         val behandlingId = UUID.randomUUID().toString()
+        val opprettetTidspunkt = LocalDateTime.now()
         val request = OpprettHistorikkinnslagRequest(behandlingId = behandlingId,
                                                      eksternFagsakId = UUID.randomUUID().toString(),
                                                      fagsystem = Fagsystem.BA,
@@ -36,6 +37,7 @@ internal class HistorikkinnslagKafkaConsumerTest : OppslagSpringRunnerTest() {
                                                      type = Historikkinnslagstype.HENDELSE,
                                                      aktør = Aktør.SAKSBEHANDLER,
                                                      aktørIdent = "Z0000",
+                                                     opprettetTidspunkt = opprettetTidspunkt,
                                                      tittel = "Behandling Opprettet")
 
         kafkaConsumer.listen(consumerRecord = ConsumerRecord(Constants.topic, 1, 0L,
@@ -51,6 +53,7 @@ internal class HistorikkinnslagKafkaConsumerTest : OppslagSpringRunnerTest() {
         assertEquals(request.applikasjon, historikkinnslag.applikasjon)
         assertEquals(request.aktør, historikkinnslag.aktør)
         assertEquals(request.aktørIdent, historikkinnslag.opprettetAv)
+        assertEquals(request.opprettetTidspunkt, opprettetTidspunkt)
         assertEquals(request.type, historikkinnslag.type)
         assertEquals(request.tittel, historikkinnslag.tittel)
         assertNull(historikkinnslag.tekst)

@@ -5,4 +5,10 @@ spring:
     url: jdbc:postgresql://localhost:5432/familie-historikk
     driver-class-name: org.postgresql.Driver
 
+no.nav.security.jwt:
+  issuer.azuread:
+    discoveryurl: ${AZUREAD_DISCOVERY_URL}
+    accepted_audience: ${AZURE_APP_CLIENT_ID}, ${AZURE_TILBAKE_APP_CLIENT_ID}
+    cookie_name: azure_token
+
 FAMILIE_TILBAKE_FRONTEND_URL: http://localhost:8000
