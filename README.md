@@ -26,7 +26,6 @@ CREATE DATABASE "familie-historikk";
 ```
 ### Autentisering
 Dersom man vil gjøre autentiserte kall mot andre tjenester, må man sette opp følgende miljø-variabler:
-* Client secret- AZURE_APP_CLIENT_SECRET
 * Client id - AZURE_APP_CLIENT_ID
 * Scope for den aktuelle tjenesten - FAMILIE_TILBAKE_FRONTEND_CLIENT_ID
 

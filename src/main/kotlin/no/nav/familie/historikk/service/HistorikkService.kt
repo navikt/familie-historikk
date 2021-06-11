@@ -24,7 +24,8 @@ class HistorikkService(private val historikkinnslagRepository: HistorikkinnslagR
                                                 steg = request.steg,
                                                 journalpostId = request.journalpostId,
                                                 dokumentId = request.dokumentId,
-                                                opprettetAv = request.aktørIdent)
+                                                opprettetAv = request.aktørIdent,
+                                                opprettetTid = request.opprettetTidspunkt)
         historikkinnslagRepository.insert(historikkinnslag)
     }
 
