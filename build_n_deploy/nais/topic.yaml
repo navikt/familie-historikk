@@ -1,7 +1,7 @@
 apiVersion: kafka.nais.io/v1
 kind: Topic
 metadata:
-  name: privat.historikk.topic
+  name: privat-historikk-topic
   namespace: teamfamilie
   labels:
     team: teamfamilie
