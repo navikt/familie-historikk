@@ -2,5 +2,5 @@ package no.nav.familie.historikk.common
 
 object Constants {
 
-    const val topic = "teamfamilie.historikk-topikk"
+    const val topic = "teamfamilie.privat-historikk-topic"
 }
