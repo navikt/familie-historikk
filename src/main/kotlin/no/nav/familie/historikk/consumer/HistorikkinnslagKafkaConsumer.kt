@@ -8,6 +8,7 @@ import no.nav.familie.kontrakter.felles.objectMapper
 import org.apache.kafka.clients.consumer.ConsumerRecord
 import org.slf4j.LoggerFactory
 import org.springframework.kafka.annotation.KafkaListener
+import org.springframework.kafka.support.Acknowledgment
 import org.springframework.stereotype.Service
 import java.util.concurrent.CountDownLatch
 
@@ -22,7 +23,7 @@ class HistorikkinnslagKafkaConsumer(private val historikkService: HistorikkServi
     @KafkaListener(id = "familie-historikk",
                    topics = [Constants.topic],
                    containerFactory = "concurrentKafkaListenerContainerFactory")
-    fun listen(consumerRecord: ConsumerRecord<String, String>) {
+    fun listen(consumerRecord: ConsumerRecord<String, String>, ack: Acknowledgment) {
         logger.info("Data mottatt i kafka $consumerRecord")
         secureLogger.info("Data mottatt i kafka $consumerRecord")
         val data: String = consumerRecord.value()
@@ -34,5 +35,6 @@ class HistorikkinnslagKafkaConsumer(private val historikkService: HistorikkServi
             secureLogger.error("Ugyldig request mottatt for key=${consumerRecord.key()} med feilmelding ${exception.message}")
         }
         latch.countDown()
+        ack.acknowledge()
     }
 }
