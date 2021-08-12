@@ -1,10 +1,10 @@
 version: 2
 registries:
-  maven-repository-maven-pkg-github-com-navikt-fp-felles:
+  familie-felles:
     type: maven-repository
-    url: https://maven.pkg.github.com/navikt/fp-felles/
+    url: https://maven.pkg.github.com/navikt/familie-felles
     username: x-access-token
-    password: "${{secrets.MAVEN_REPOSITORY_MAVEN_PKG_GITHUB_COM_NAVIKT_FP_FELLES_PASSWORD}}"
+    password: "${{secrets.NAV_READ_PACKAGES}}"
 
 updates:
 - package-ecosystem: maven
@@ -13,22 +13,10 @@ updates:
     interval: daily
     time: "04:00"
   open-pull-requests-limit: 10
-  ignore:
-  - dependency-name: no.nav.familie.felles:sikkerhet
-    versions:
-    - 1.20210416135502_5bf9eff
-  - dependency-name: no.nav.familie.felles:http-client
-    versions:
-    - 1.20210416135502_5bf9eff
-  - dependency-name: no.nav.familie.felles:log
-    versions:
-    - 1.20210416135502_5bf9eff
-  - dependency-name: no.nav.familie.kontrakter:felles
-    versions:
-    - 2.0_20210415153406_ea38051
-    - 2.0_20210416141710_97efcc5
-  - dependency-name: no.nav.common:cxf
-    versions:
-    - 2.2021.04.08_11.42-d0c0afd39ca0
+  target-branch: main
   registries:
-  - maven-repository-maven-pkg-github-com-navikt-fp-felles
+    - familie-felles
+  ignore:
+    - dependency-name: org.jetbrains.kotlinx:kotlinx-coroutines-core
+      versions:
+        - 1.5.0-native-mt
