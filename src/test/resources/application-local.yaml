@@ -2,7 +2,7 @@ spring:
   datasource:
     username: postgres
     password: test
-    url: jdbc:postgresql://localhost:5433/familie-historikk
+    url: jdbc:postgresql://localhost:5432/familie-historikk
     driver-class-name: org.postgresql.Driver
 
 no.nav.security.jwt:
