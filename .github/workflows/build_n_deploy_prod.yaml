@@ -5,7 +5,7 @@ on:
       - main
 
 env:
-  IMAGE: ghcr.io/${{ github.repository }}/familie-historikk:${{ github.sha }}
+  IMAGE: ghcr.io/navikt/familie-historikk:${{ github.sha }}
   VERSION: familie-historikk:${{ github.sha }}
 
 jobs:
