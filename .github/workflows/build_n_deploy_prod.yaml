@@ -5,7 +5,7 @@ on:
       - main
 
 env:
-  IMAGE: ghcr.io/${{ github.repository }}/familie-historikk:${{ github.sha }}
+  IMAGE: ghcr.io/navikt/familie-historikk:${{ github.sha }}
   VERSION: familie-historikk:${{ github.sha }}
 
 jobs:
@@ -35,9 +35,12 @@ jobs:
       - name: Bygg Docker image
         run: |
           docker build -t $IMAGE .
-      - name: Log into ghcr registry
-        run: |
-          echo "${{ secrets.ACCESS_TOKEN }}" | docker login ghcr.io -u x-access-token --password-stdin
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@ab80d026d4753220c4243394c07c7d80f9638d06
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Push Docker image
         run: docker push $IMAGE
   deploy:
