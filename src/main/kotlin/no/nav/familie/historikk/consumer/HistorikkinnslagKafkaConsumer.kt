@@ -7,12 +7,14 @@ import no.nav.familie.kontrakter.felles.historikkinnslag.OpprettHistorikkinnslag
 import no.nav.familie.kontrakter.felles.objectMapper
 import org.apache.kafka.clients.consumer.ConsumerRecord
 import org.slf4j.LoggerFactory
+import org.springframework.context.annotation.Profile
 import org.springframework.kafka.annotation.KafkaListener
 import org.springframework.kafka.support.Acknowledgment
 import org.springframework.stereotype.Service
 import java.util.concurrent.CountDownLatch
 
 @Service
+@Profile("!e2e")
 class HistorikkinnslagKafkaConsumer(private val historikkService: HistorikkService) {
 
     private val logger = LoggerFactory.getLogger(this::class.java)

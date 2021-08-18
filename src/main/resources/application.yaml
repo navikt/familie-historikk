@@ -36,16 +36,6 @@ no.nav.security.jwt:
     discoveryurl: ${AZUREAD_DISCOVERY_URL}
     accepted_audience: ${AZURE_APP_CLIENT_ID}
     cookie_name: azure_token
-  client:
-    registration:
-      familie-tilbake-frontend:
-        resource-url: ${FAMILIE_TILBAKE_FRONTEND_URL}
-        token-endpoint-url: ${AZUREAD_TOKEN_ENDPOINT_URL}
-        grant-type: urn:ietf:params:oauth:grant-type:jwt-bearer
-        authentication:
-          client-id: ${AZURE_APP_CLIENT_ID}
-          client-secret: ${AZURE_APP_CLIENT_SECRET}
-          client-auth-method: client_secret_basic
 
 management:
   endpoint.health.show-details: always
