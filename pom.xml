@@ -39,7 +39,7 @@
         <sonar.login>${SONAR_LOGIN}</sonar.login>
         <spring.cloud>3.0.2</spring.cloud>
         <spring.cloud-contract>3.0.2</spring.cloud-contract>
-        <testcontainers.version>1.15.3</testcontainers.version>
+        <testcontainers.version>1.16.0</testcontainers.version>
         <swagger.version>3.0.0</swagger.version>
 
     </properties>
