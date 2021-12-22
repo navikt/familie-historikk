@@ -16,15 +16,12 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - uses: actions/setup-java@v1
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
         with:
-          java-version: 11
-      - uses: actions/cache@v2
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-cache-${{ hashFiles('pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-cache-
+          java-version: 17
+          distribution: 'temurin'
+          cache: 'maven'
       - name: Bygg med maven + sonar
         env:
           SONAR_PROJECTKEY: ${{ secrets.SONAR_PROJECTKEY }}
