@@ -22,12 +22,6 @@ jobs:
           java-version: 17
           distribution: 'temurin'
           cache: 'maven'
-      - uses: actions/cache@v2
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-cache-${{ hashFiles('pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-cache-
       - name: Bygg med maven + sonar
         env:
           SONAR_PROJECTKEY: ${{ secrets.SONAR_PROJECTKEY }}
