@@ -1,10 +1,8 @@
 name: Build & Deploy til Dev
 on:
-  pull_request_target:
-    types: [ opened,synchronize,reopened,ready_for_review ]
-  push:
-    branches:
-      - main
+  pull_request:
+    types: [ opened, synchronize, reopened, ready_for_review ]
+  workflow_dispatch:
 
 env:
   IMAGE: ghcr.io/navikt/familie-historikk:${{ github.sha }}
