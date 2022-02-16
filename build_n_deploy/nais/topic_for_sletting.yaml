@@ -9,3 +9,7 @@ metadata:
     kafka.nais.io/removeDataWhenResourceIsDeleted: "true"
 spec:
   pool: nav-dev
+  acl:
+    - team: teamfamilie
+      application: familie-historikk #owner
+      access: readwrite   # readwrite
