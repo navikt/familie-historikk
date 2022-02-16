@@ -7,3 +7,5 @@ metadata:
     team: teamfamilie
   annotations:
     kafka.nais.io/removeDataWhenResourceIsDeleted: "true"
+spec:
+  pool: nav-dev
