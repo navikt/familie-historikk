@@ -1,4 +1,4 @@
-package no.nav.familie.tilbake.common.exceptionhandler
+package no.nav.familie.historikk.common.exceptionhandler
 
 import no.nav.familie.kontrakter.felles.Ressurs
 import org.slf4j.LoggerFactory
