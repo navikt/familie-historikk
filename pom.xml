@@ -39,7 +39,7 @@
         <sonar.login>${SONAR_LOGIN}</sonar.login>
         <spring.cloud>3.1.1</spring.cloud>
         <spring.cloud-contract>3.1.1</spring.cloud-contract>
-        <testcontainers.version>1.16.3</testcontainers.version>
+        <testcontainers.version>1.17.1</testcontainers.version>
         <springdoc.version>1.6.8</springdoc.version>
         <kafka.version>3.1.0</kafka.version>
     </properties>
