@@ -11,7 +11,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.4</version>
+        <version>2.6.7</version>
     </parent>
 
     <properties>
@@ -22,14 +22,14 @@
         <jvmTarget>17</jvmTarget>
         <main-class>no.nav.familie.historikk.LauncherKt</main-class>
         <kotlin.version>1.6.21</kotlin.version>
-        <felles.version>1.20220406145421_5f46d64</felles.version>
+        <felles.version>1.20220503150007_21cbfef</felles.version>
         <common-java-modules.version>2.2021.03.26_09.45-569ba329264c</common-java-modules.version>
-        <kontrakter.version>2.0_20220412101553_5627657</kontrakter.version>
+        <kontrakter.version>2.0_20220511153536_d0e625c</kontrakter.version>
         <nav.security.version>2.0.5</nav.security.version>
         <jaxb-api.version>2.4.0-b180830.0359</jaxb-api.version>
         <jaxb-core.version>3.0.2</jaxb-core.version>
         <jaxb-impl.version>3.0.2</jaxb-impl.version>
-        <mockk.version>1.12.3</mockk.version>
+        <mockk.version>1.12.4</mockk.version>
         <!--suppress UnresolvedMavenProperty  Ligger som secret i github-->
         <sonar.projectKey>${SONAR_PROJECTKEY}</sonar.projectKey>
         <sonar.organization>navit</sonar.organization>
@@ -37,11 +37,11 @@
         <sonar.coverage.exclusions>**/config/FlywayConfig.kt</sonar.coverage.exclusions>
         <!--suppress UnresolvedMavenProperty Ligger som secret i github-->
         <sonar.login>${SONAR_LOGIN}</sonar.login>
-        <spring.cloud>3.1.1</spring.cloud>
-        <spring.cloud-contract>3.1.1</spring.cloud-contract>
-        <testcontainers.version>1.16.3</testcontainers.version>
+v        <spring.cloud>3.1.2</spring.cloud>
+        <spring.cloud-contract>3.1.2</spring.cloud-contract>
+        <testcontainers.version>1.17.1</testcontainers.version>
         <springdoc.version>1.6.8</springdoc.version>
-        <kafka.version>3.1.0</kafka.version>
+        <kafka.version>3.2.0</kafka.version>
     </properties>
     <repositories>
         <repository>
@@ -138,7 +138,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.3.3</version>
+            <version>42.3.5</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
