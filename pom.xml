@@ -28,7 +28,7 @@
         <nav.security.version>2.0.5</nav.security.version>
         <jaxb-api.version>2.4.0-b180830.0359</jaxb-api.version>
         <jaxb-core.version>3.0.2</jaxb-core.version>
-        <jaxb-impl.version>3.0.2</jaxb-impl.version>
+        <jaxb-impl.version>4.0.0</jaxb-impl.version>
         <mockk.version>1.12.4</mockk.version>
         <!--suppress UnresolvedMavenProperty  Ligger som secret i github-->
         <sonar.projectKey>${SONAR_PROJECTKEY}</sonar.projectKey>
