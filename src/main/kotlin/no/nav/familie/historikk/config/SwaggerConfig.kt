@@ -14,17 +14,16 @@ class SwaggerConfig {
     @Bean
     fun historikkApi(): OpenAPI {
         return OpenAPI().info(Info().title("Historikk Api").version("V1"))
-                .components(Components().addSecuritySchemes("bearer", bearerTokenSecurityScheme()))
-                .addSecurityItem(SecurityRequirement().addList("bearer", listOf("read", "write")))
+            .components(Components().addSecuritySchemes("bearer", bearerTokenSecurityScheme()))
+            .addSecurityItem(SecurityRequirement().addList("bearer", listOf("read", "write")))
     }
 
     private fun bearerTokenSecurityScheme(): SecurityScheme {
         return SecurityScheme()
-                .type(SecurityScheme.Type.APIKEY)
-                .scheme("bearer")
-                .bearerFormat("JWT")
-                .`in`(SecurityScheme.In.HEADER)
-                .name("Authorization")
+            .type(SecurityScheme.Type.APIKEY)
+            .scheme("bearer")
+            .bearerFormat("JWT")
+            .`in`(SecurityScheme.In.HEADER)
+            .name("Authorization")
     }
-
 }

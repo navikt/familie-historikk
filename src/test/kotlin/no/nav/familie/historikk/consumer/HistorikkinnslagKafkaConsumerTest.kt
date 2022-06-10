@@ -33,7 +33,7 @@ internal class HistorikkinnslagKafkaConsumerTest : OppslagSpringRunnerTest() {
     private lateinit var acknowledgment: Acknowledgment
 
     @BeforeEach
-    fun init(){
+    fun init() {
         acknowledgment = mockk()
         every { acknowledgment.acknowledge() } returns Unit
     }
@@ -42,19 +42,25 @@ internal class HistorikkinnslagKafkaConsumerTest : OppslagSpringRunnerTest() {
     fun `listen skal lagre historikkinnslag når mottatt gyldig melding`() {
         val behandlingId = UUID.randomUUID().toString()
         val opprettetTidspunkt = LocalDateTime.now()
-        val request = OpprettHistorikkinnslagRequest(behandlingId = behandlingId,
-                                                     eksternFagsakId = UUID.randomUUID().toString(),
-                                                     fagsystem = Fagsystem.BA,
-                                                     applikasjon = Applikasjon.FAMILIE_TILBAKE,
-                                                     type = Historikkinnslagstype.HENDELSE,
-                                                     aktør = Aktør.SAKSBEHANDLER,
-                                                     aktørIdent = "Z0000",
-                                                     opprettetTidspunkt = opprettetTidspunkt,
-                                                     tittel = "Behandling Opprettet")
+        val request = OpprettHistorikkinnslagRequest(
+            behandlingId = behandlingId,
+            eksternFagsakId = UUID.randomUUID().toString(),
+            fagsystem = Fagsystem.BA,
+            applikasjon = Applikasjon.FAMILIE_TILBAKE,
+            type = Historikkinnslagstype.HENDELSE,
+            aktør = Aktør.SAKSBEHANDLER,
+            aktørIdent = "Z0000",
+            opprettetTidspunkt = opprettetTidspunkt,
+            tittel = "Behandling Opprettet"
+        )
 
-        kafkaConsumer.listen(consumerRecord = ConsumerRecord(Constants.topic, 1, 0L,
-                                                             behandlingId, objectMapper.writeValueAsString(request)),
-                             ack = acknowledgment)
+        kafkaConsumer.listen(
+            consumerRecord = ConsumerRecord(
+                Constants.topic, 1, 0L,
+                behandlingId, objectMapper.writeValueAsString(request)
+            ),
+            ack = acknowledgment
+        )
 
         val historikkinnslagene = historikkinnslagRepository.findByBehandlingId(behandlingId)
         assertTrue { historikkinnslagene.isNotEmpty() }
@@ -78,9 +84,13 @@ internal class HistorikkinnslagKafkaConsumerTest : OppslagSpringRunnerTest() {
     fun `listen skal ikke lagre historikkinnslag når mottatt ugyldig melding`() {
         val behandlingId = UUID.randomUUID().toString()
         val request = "testverdi"
-        kafkaConsumer.listen(consumerRecord = ConsumerRecord(Constants.topic, 1, 0L,
-                                                             behandlingId, objectMapper.writeValueAsString(request)),
-                             ack = acknowledgment)
+        kafkaConsumer.listen(
+            consumerRecord = ConsumerRecord(
+                Constants.topic, 1, 0L,
+                behandlingId, objectMapper.writeValueAsString(request)
+            ),
+            ack = acknowledgment
+        )
 
         val historikkinnslag = historikkinnslagRepository.findByBehandlingId(behandlingId)
         assertTrue { historikkinnslag.isEmpty() }

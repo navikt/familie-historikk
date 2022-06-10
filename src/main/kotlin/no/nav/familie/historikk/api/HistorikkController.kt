@@ -17,10 +17,14 @@ import org.springframework.web.bind.annotation.RestController
 @Validated
 class HistorikkController(private val historikkService: HistorikkService) {
 
-    @GetMapping("/applikasjon/{applikasjon}/behandling/{behandlingId}",
-                produces = [MediaType.APPLICATION_JSON_VALUE])
-    fun hentHistorikkinnslag(@PathVariable("applikasjon") applikasjon: String,
-                             @PathVariable("behandlingId") behandlingId: String): Ressurs<List<HistorikkinnslagDto?>> {
+    @GetMapping(
+        "/applikasjon/{applikasjon}/behandling/{behandlingId}",
+        produces = [MediaType.APPLICATION_JSON_VALUE]
+    )
+    fun hentHistorikkinnslag(
+        @PathVariable("applikasjon") applikasjon: String,
+        @PathVariable("behandlingId") behandlingId: String
+    ): Ressurs<List<HistorikkinnslagDto?>> {
         return Ressurs.success(historikkService.hentHistorikkinnslag(Applikasjon.valueOf(applikasjon), behandlingId))
     }
 }
