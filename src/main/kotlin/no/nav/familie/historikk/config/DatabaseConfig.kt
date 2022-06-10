@@ -12,7 +12,6 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager
 import org.springframework.transaction.PlatformTransactionManager
 import javax.sql.DataSource
 
-
 @Configuration
 @EnableJdbcAuditing
 @EnableJdbcRepositories("no.nav.familie.historikk")
@@ -22,7 +21,6 @@ class DatabaseConfig : AbstractJdbcConfiguration() {
     fun operations(dataSource: DataSource): NamedParameterJdbcOperations {
         return NamedParameterJdbcTemplate(dataSource)
     }
-
 
     @Bean
     fun transactionManager(dataSource: DataSource): PlatformTransactionManager {

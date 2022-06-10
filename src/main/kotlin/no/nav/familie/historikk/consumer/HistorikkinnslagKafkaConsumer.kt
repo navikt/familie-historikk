@@ -22,9 +22,11 @@ class HistorikkinnslagKafkaConsumer(private val historikkService: HistorikkServi
 
     var latch: CountDownLatch = CountDownLatch(1)
 
-    @KafkaListener(id = "familie-historikk",
-                   topics = [Constants.topic],
-                   containerFactory = "concurrentKafkaListenerContainerFactory")
+    @KafkaListener(
+        id = "familie-historikk",
+        topics = [Constants.topic],
+        containerFactory = "concurrentKafkaListenerContainerFactory"
+    )
     fun listen(consumerRecord: ConsumerRecord<String, String>, ack: Acknowledgment) {
         logger.info("Data mottatt i kafka $consumerRecord")
         secureLogger.info("Data mottatt i kafka $consumerRecord")

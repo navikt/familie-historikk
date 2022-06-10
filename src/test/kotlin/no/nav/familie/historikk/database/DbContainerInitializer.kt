@@ -9,9 +9,11 @@ class DbContainerInitializer : ApplicationContextInitializer<ConfigurableApplica
 
     override fun initialize(applicationContext: ConfigurableApplicationContext) {
         postgres.start()
-        TestPropertyValues.of("spring.datasource.url=${postgres.jdbcUrl}",
-                              "spring.datasource.username=${postgres.username}",
-                              "spring.datasource.password=${postgres.password}").applyTo(applicationContext.environment)
+        TestPropertyValues.of(
+            "spring.datasource.url=${postgres.jdbcUrl}",
+            "spring.datasource.username=${postgres.username}",
+            "spring.datasource.password=${postgres.password}"
+        ).applyTo(applicationContext.environment)
     }
 
     companion object {
@@ -19,9 +21,9 @@ class DbContainerInitializer : ApplicationContextInitializer<ConfigurableApplica
         // Lazy because we only want it to be initialized when accessed
         private val postgres: KPostgreSQLContainer by lazy {
             KPostgreSQLContainer("postgres:11.1")
-                    .withDatabaseName("familie-historikk")
-                    .withUsername("postgres")
-                    .withPassword("test")
+                .withDatabaseName("familie-historikk")
+                .withUsername("postgres")
+                .withPassword("test")
         }
     }
 }

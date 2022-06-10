@@ -19,7 +19,6 @@ import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit.jupiter.SpringExtension
 
-
 @ExtendWith(SpringExtension::class)
 @ContextConfiguration(initializers = [DbContainerInitializer::class])
 @SpringBootTest(classes = [LauncherLocal::class], webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -51,9 +50,8 @@ abstract class OppslagSpringRunnerTest {
 
     private fun clearCaches() {
         cacheManager.cacheNames.mapNotNull { cacheManager.getCache(it) }
-                .forEach { it.clear() }
+            .forEach { it.clear() }
     }
-
 
     protected fun getPort(): String {
         return port.toString()
