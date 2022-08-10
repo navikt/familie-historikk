@@ -31,7 +31,9 @@ abstract class OppslagSpringRunnerTest {
     protected val headers = HttpHeaders()
 
     @Autowired private lateinit var jdbcAggregateOperations: JdbcAggregateOperations
+
     @Autowired private lateinit var applicationContext: ApplicationContext
+
     @Autowired private lateinit var cacheManager: CacheManager
 
     @LocalServerPort
