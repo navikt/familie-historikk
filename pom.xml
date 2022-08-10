@@ -21,7 +21,7 @@
         <java.version>17</java.version>
         <jvmTarget>17</jvmTarget>
         <main-class>no.nav.familie.historikk.LauncherKt</main-class>
-        <kotlin.version>1.6.21</kotlin.version>
+        <kotlin.version>1.7.10</kotlin.version>
         <felles.version>1.20220802121553_b7ac6e6</felles.version>
         <common-java-modules.version>2.2021.03.26_09.45-569ba329264c</common-java-modules.version>
         <kontrakter.version>2.0_20220603145941_a60ca7c</kontrakter.version>
