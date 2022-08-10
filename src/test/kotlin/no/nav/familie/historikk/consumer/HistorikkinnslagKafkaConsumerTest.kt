@@ -56,8 +56,11 @@ internal class HistorikkinnslagKafkaConsumerTest : OppslagSpringRunnerTest() {
 
         kafkaConsumer.listen(
             consumerRecord = ConsumerRecord(
-                Constants.topic, 1, 0L,
-                behandlingId, objectMapper.writeValueAsString(request)
+                Constants.topic,
+                1,
+                0L,
+                behandlingId,
+                objectMapper.writeValueAsString(request)
             ),
             ack = acknowledgment
         )
@@ -86,8 +89,11 @@ internal class HistorikkinnslagKafkaConsumerTest : OppslagSpringRunnerTest() {
         val request = "testverdi"
         kafkaConsumer.listen(
             consumerRecord = ConsumerRecord(
-                Constants.topic, 1, 0L,
-                behandlingId, objectMapper.writeValueAsString(request)
+                Constants.topic,
+                1,
+                0L,
+                behandlingId,
+                objectMapper.writeValueAsString(request)
             ),
             ack = acknowledgment
         )

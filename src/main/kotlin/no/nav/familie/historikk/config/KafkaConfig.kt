@@ -70,6 +70,6 @@ class KafkaConfig(
         SslConfigs.SSL_TRUSTSTORE_PASSWORD_CONFIG to kafkaCredstorePassword,
         SslConfigs.SSL_KEYSTORE_LOCATION_CONFIG to kafkaKeystorePath,
         SslConfigs.SSL_KEYSTORE_PASSWORD_CONFIG to kafkaCredstorePassword,
-        SslConfigs.SSL_KEY_PASSWORD_CONFIG to kafkaCredstorePassword,
+        SslConfigs.SSL_KEY_PASSWORD_CONFIG to kafkaCredstorePassword
     )
 }
