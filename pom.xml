@@ -22,9 +22,9 @@
         <jvmTarget>17</jvmTarget>
         <main-class>no.nav.familie.historikk.LauncherKt</main-class>
         <kotlin.version>1.7.10</kotlin.version>
-        <felles.version>1.20220802121553_b7ac6e6</felles.version>
+        <felles.version>1.20220810173009_7bf2638</felles.version>
         <common-java-modules.version>2.2021.03.26_09.45-569ba329264c</common-java-modules.version>
-        <kontrakter.version>2.0_20220803112940_a98594f</kontrakter.version>
+        <kontrakter.version>2.0_20220810200841_fb83674</kontrakter.version>
         <nav.security.version>2.0.5</nav.security.version>
         <mockk.version>1.12.5</mockk.version>
         <!--suppress UnresolvedMavenProperty  Ligger som secret i github-->
@@ -316,7 +316,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.8</version>
+                <version>3.1.0</version>
                 <executions>
                     <execution>
                         <id>ktlint</id>
