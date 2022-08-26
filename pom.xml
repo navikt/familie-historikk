@@ -22,7 +22,7 @@
         <jvmTarget>17</jvmTarget>
         <main-class>no.nav.familie.historikk.LauncherKt</main-class>
         <kotlin.version>1.7.10</kotlin.version>
-        <felles.version>1.20220811104902_c1860ff</felles.version>
+        <felles.version>1.20220825143515_990c052</felles.version>
         <common-java-modules.version>2.2021.03.26_09.45-569ba329264c</common-java-modules.version>
         <kontrakter.version>2.0_20220816155249_ed01bd5</kontrakter.version>
         <nav.security.version>2.0.5</nav.security.version>
