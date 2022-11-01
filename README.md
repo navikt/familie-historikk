@@ -3,7 +3,7 @@ Applikasjon for historikkinnslag. Denne applikasjonen kan brukes av alle familie
 Foreløpig brukes den for Tilbakekrevingsapplikasjon.
 
 ## Bygging
-Bygging gjøres med `mvn clean install`.
+Bygging gjøres med `mvn verify`.
 
 ## Kjøring lokalt
 For å kjøre opp appen lokalt kan en kjøre `DevLauncher` med Spring-profilen `dev` satt. Dette kan feks gjøres ved å sette
@@ -29,8 +29,21 @@ Dersom man vil gjøre autentiserte kall mot andre tjenester, må man sette opp f
 * Client id - AZURE_APP_CLIENT_ID
 * Scope for den aktuelle tjenesten - FAMILIE_TILBAKE_FRONTEND_CLIENT_ID
 
-Alle disse variablene finnes i applikasjonens mappe for preprod-fss på vault.
 Variablene legges inn under DevLauncher -> Edit Configurations -> Environment Variables.
+
+Miljøvariablene kan hentes fra `azuread-familie-historikk-lokal` i
+dev-gcp-clusteret ved å gjøre følgende:
+
+1. Logg på `gcloud`, typisk med kommandoen: `gcloud auth login`
+2. Koble deg til dev-gcp-cluster'et: `kubectl config use-context dev-gcp`
+3. Hent info:  
+   `kubectl -n teamfamilie get secret azuread-familie-historikk-lokal -o json | jq '.data | map_values(@base64d)'`.
+
+AZURE_APP_CLIENT_ID må settes til `AZURE_APP_CLIENT_ID` og AZURE_APP_CLIENT_SECRET til`AZURE_APP_CLIENT_SECRET`
+
+Dersom man vil gjøre autentiserte kall mot andre tjenester, må man også legge til scope for den aktuelle tjenesten i
+miljøveriablene. Det kan hentes
+fra [Vault](https://vault.adeo.no/ui/vault/secrets/kv%2Fpreprod%2Ffss/show/familie-ba-sak/default).
 
 ## Produksjonssetting
 Main-branchen blir automatisk bygget ved merge og deployet til prod.
