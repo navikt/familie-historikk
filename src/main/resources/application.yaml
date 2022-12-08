@@ -56,5 +56,4 @@ AZUREAD_DISCOVERY_URL: https://login.microsoftonline.com/navq.onmicrosoft.com/v2
 AZUREAD_TOKEN_ENDPOINT_URL: https://login.microsoftonline.com/navq.onmicrosoft.com/oauth2/v2.0/token
 FAMILIE_TILBAKE_FRONTEND_URL: https://familie-tilbake-frontend.${ON_PREM_URL_ENV}.intern.nav.no
 
-ACCEPTED_CLIENTS: ${FAMILIE_TILBAKE_FRONTEND_CLIENT_ID}
 
