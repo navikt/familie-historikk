@@ -26,7 +26,7 @@ spec:
     enabled: false
   gcp: # Database
     sqlInstances:
-      - type: POSTGRES_12
+      - type: POSTGRES_14
         name: familie-historikk
         diskAutoresize: true
         highAvailability: true
