@@ -37,7 +37,7 @@
         <spring.cloud>3.1.2</spring.cloud>
         <spring.cloud-contract>4.0.1</spring.cloud-contract>
         <testcontainers.version>1.17.6</testcontainers.version>
-        <springdoc.version>1.6.14</springdoc.version>
+        <springdoc.version>1.6.15</springdoc.version>
         <kafka.version>3.3.1</kafka.version>
     </properties>
     <repositories>
