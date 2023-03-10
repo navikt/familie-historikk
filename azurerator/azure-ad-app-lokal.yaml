@@ -23,6 +23,5 @@ spec:
     - application: ida
       cluster: prod-fss
       namespace: default
-  logoutUrl: "https://familie-historikk.dev.intern.nav.no"
   tenant: trygdeetaten.no
   secretName: azuread-familie-historikk-lokal

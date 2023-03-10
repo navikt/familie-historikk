@@ -69,7 +69,7 @@ spec:
       memory: 1Gi
       cpu: 500m
   ingresses:
-    - https://familie-historikk.dev.intern.nav.no
+    - https://familie-historikk.intern.dev.nav.no
   secureLogs:
     enabled: true
   env:
