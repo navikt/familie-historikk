@@ -26,7 +26,7 @@
         <common-java-modules.version>2.2021.03.26_09.45-569ba329264c</common-java-modules.version>
         <kontrakter.version>2.0_20221202084337_d05f555</kontrakter.version>
         <nav.security.version>2.0.5</nav.security.version>
-        <mockk.version>1.13.4</mockk.version>
+        <mockk.version>1.13.5</mockk.version>
         <!--suppress UnresolvedMavenProperty  Ligger som secret i github-->
         <sonar.projectKey>${SONAR_PROJECTKEY}</sonar.projectKey>
         <sonar.organization>navit</sonar.organization>
