@@ -27,7 +27,7 @@ spec:
   gcp: # Database
     sqlInstances:
       - type: POSTGRES_14
-        name: familie-historikk
+        name: familie-historikk-test
         autoBackupTime: "03:00"
         databases:
           - name: familie-historikk
