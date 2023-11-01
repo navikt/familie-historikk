@@ -20,7 +20,7 @@ I tillegg må man sette opp postgres-databasen, dette gjøres slik:
 docker run --name familie-historikk-postgres -e POSTGRES_PASSWORD=test -d -p 5432:5432 postgres
 docker ps (finn container id)
 (for mac) docker exec -it <container_id> bash
-(for wondows) winpty docker exec -it <container_id> bash(fra git-bash windows)
+(for windows) winpty docker exec -it <container_id> bash(fra git-bash windows)
 psql -U postgres
 CREATE DATABASE "familie-historikk";
 \l (til å verifisere om databasen er opprettet)
