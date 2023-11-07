@@ -53,4 +53,5 @@ jobs:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: prod-gcp
           RESOURCE: build_n_deploy/nais/nais_prod_gcp.yaml,build_n_deploy/nais/topic_prod.yaml
+          IMAGE: ${{ steps.docker-push.outputs.image }}
           VAR: VERSION=${{ env.VERSION }}

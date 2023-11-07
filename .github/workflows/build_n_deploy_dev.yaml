@@ -56,11 +56,12 @@ jobs:
     permissions:
       packages: write
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Deploy til dev-gcp
         uses: nais/deploy/actions/deploy@v1
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: dev-gcp
           RESOURCE: build_n_deploy/nais/nais_dev_gcp.yaml,build_n_deploy/nais/topic.yaml
+          IMAGE: ${{ steps.docker-push.outputs.image }}
           VAR: VERSION=${{ env.VERSION }}
