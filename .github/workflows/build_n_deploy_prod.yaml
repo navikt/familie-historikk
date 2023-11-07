@@ -41,10 +41,15 @@ jobs:
           docker_context: .
           project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
           identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
+    outputs:
+      image: ${{ steps.docker-push.outputs.image }}
   deploy:
     name: Deploy to Prod NAIS / GCP
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: "read"
+      id-token: "write"
     steps:
       - uses: actions/checkout@v2
       - name: Deploy til prod-gcp
@@ -53,5 +58,5 @@ jobs:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: prod-gcp
           RESOURCE: build_n_deploy/nais/nais_prod_gcp.yaml,build_n_deploy/nais/topic_prod.yaml
-          IMAGE: ${{ steps.docker-push.outputs.image }}
+          IMAGE: ${{ needs.build.outputs.image }}
           VAR: VERSION=${{ env.VERSION }}
