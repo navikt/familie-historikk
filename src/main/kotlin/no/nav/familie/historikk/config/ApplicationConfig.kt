@@ -6,6 +6,7 @@ import no.nav.familie.log.filter.LogFilter
 import no.nav.security.token.support.client.core.http.OAuth2HttpClient
 import no.nav.security.token.support.client.spring.oauth2.DefaultOAuth2HttpClient
 import no.nav.security.token.support.spring.api.EnableJwtTokenValidation
+import org.slf4j.LoggerFactory
 import org.springframework.boot.SpringBootConfiguration
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan
 import org.springframework.boot.web.client.RestTemplateBuilder
@@ -35,7 +36,8 @@ class ApplicationConfig {
 
     @Bean
     fun logFilter(): FilterRegistrationBean<LogFilter> {
-        val filterRegistration = FilterRegistrationBean<LogFilter>()
+        log.info("Registering LogFilter filter")
+        val filterRegistration: FilterRegistrationBean<LogFilter> = FilterRegistrationBean()
         filterRegistration.filter = LogFilter()
         filterRegistration.order = 1
         return filterRegistration
@@ -65,7 +67,7 @@ class ApplicationConfig {
         return DefaultOAuth2HttpClient(
             RestTemplateBuilder()
                 .setConnectTimeout(Duration.of(2, ChronoUnit.SECONDS))
-                .setReadTimeout(Duration.of(4, ChronoUnit.SECONDS))
+                .setReadTimeout(Duration.of(4, ChronoUnit.SECONDS)),
         )
     }
 
@@ -74,6 +76,7 @@ class ApplicationConfig {
 
     companion object {
 
+        private val log = LoggerFactory.getLogger(ApplicationConfig::class.java)
         const val pakkenavn = "no.nav.familie.historikk"
     }
 }
