@@ -7,16 +7,21 @@ registries:
     password: "${{secrets.NAV_READ_PACKAGES}}"
 
 updates:
-- package-ecosystem: maven
-  directory: "/"
-  schedule:
-    interval: daily
-    time: "04:00"
-  open-pull-requests-limit: 15
-  target-branch: main
-  registries:
-    - familie-felles
-  ignore:
-    - dependency-name: org.jetbrains.kotlinx:kotlinx-coroutines-core
-      versions:
-        - 1.5.0-native-mt
+  - package-ecosystem: maven
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: "sunday"
+      time: "04:00"
+    open-pull-requests-limit: 20
+    target-branch: main
+    registries:
+      - familie-felles
+    groups:
+      all-dependencies:
+        patterns:
+          - "*"
+    ignore:
+      - dependency-name: org.jetbrains.kotlinx:kotlinx-coroutines-core
+        versions:
+          - 1.5.0-native-mt
