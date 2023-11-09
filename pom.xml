@@ -24,7 +24,7 @@
         <kotlin.version>1.9.20</kotlin.version>
         <felles.version>2.20231023145006_05059d5</felles.version>
         <common-java-modules.version>2.2021.03.26_09.45-569ba329264c</common-java-modules.version>
-        <kontrakter.version>2.0_20221202084337_d05f555</kontrakter.version>
+        <kontrakter.version>3.0_20231108113903_c601ed9</kontrakter.version>
         <nav.security.version>2.0.5</nav.security.version>
         <mockk.version>1.13.4</mockk.version>
         <jakarta-servlet.version>5.0.0</jakarta-servlet.version>
