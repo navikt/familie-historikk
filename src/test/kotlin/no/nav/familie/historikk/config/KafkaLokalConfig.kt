@@ -50,9 +50,9 @@ class KafkaLokalConfig {
         println(
             "concurrentKafkaListenerContainerFactory - " +
                 "BOOTSTRAP_SERVERS_CONFIG:${
-                factory.consumerFactory
-                    .configurationProperties[ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG]
-                } "
+                    factory.consumerFactory
+                        .configurationProperties[ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG]
+                } ",
         )
         return factory
     }
@@ -65,6 +65,6 @@ class KafkaLokalConfig {
         ConsumerConfig.AUTO_OFFSET_RESET_CONFIG to "latest",
         CommonClientConfigs.RETRIES_CONFIG to 10,
         CommonClientConfigs.RETRY_BACKOFF_MS_CONFIG to 100,
-        ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG to "localhost:9092"
+        ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG to "localhost:9092",
     )
 }

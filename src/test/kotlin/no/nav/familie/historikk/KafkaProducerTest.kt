@@ -37,12 +37,12 @@ internal class KafkaProducerTest : OppslagSpringRunnerTest() {
             aktør = Aktør.SAKSBEHANDLER,
             aktørIdent = "Z0000",
             opprettetTidspunkt = LocalDateTime.now(),
-            tittel = "Behandling Opprettet"
+            tittel = "Behandling Opprettet",
         )
         val producerRecord = ProducerRecord(
             Constants.topic,
             behandlingId,
-            objectMapper.writeValueAsString(request)
+            objectMapper.writeValueAsString(request),
         )
         kafkaTemplate.send(producerRecord)
 

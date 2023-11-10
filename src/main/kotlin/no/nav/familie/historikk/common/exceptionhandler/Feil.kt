@@ -8,5 +8,5 @@ class Feil(
     message: String,
     val frontendFeilmelding: String? = null,
     val httpStatus: HttpStatus = HttpStatus.INTERNAL_SERVER_ERROR,
-    throwable: Throwable? = null
+    throwable: Throwable? = null,
 ) : RuntimeException(message, throwable)

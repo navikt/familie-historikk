@@ -26,7 +26,7 @@ class HistorikkService(private val historikkinnslagRepository: HistorikkinnslagR
             journalpostId = request.journalpostId,
             dokumentId = request.dokumentId,
             opprettetAv = request.aktørIdent,
-            opprettetTid = request.opprettetTidspunkt
+            opprettetTid = request.opprettetTidspunkt,
         )
         historikkinnslagRepository.insert(historikkinnslag)
     }
@@ -48,7 +48,7 @@ class HistorikkService(private val historikkinnslagRepository: HistorikkinnslagR
                 steg = it.steg,
                 journalpostId = it.journalpostId,
                 dokumentId = it.dokumentId,
-                opprettetTid = it.opprettetTid
+                opprettetTid = it.opprettetTid,
             )
         }.sortedBy { it.opprettetTid }
     }

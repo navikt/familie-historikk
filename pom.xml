@@ -38,7 +38,6 @@
         <spring.cloud-contract>4.0.4</spring.cloud-contract>
         <testcontainers.version>1.19.1</testcontainers.version>
         <springdoc.version>1.7.0</springdoc.version>
-        <kafka.version>3.6.0</kafka.version>
     </properties>
     <repositories>
         <repository>
@@ -174,14 +173,12 @@
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-clients</artifactId>
-            <version>${kafka.version}</version>
         </dependency>
         <!-- Test -->
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka_2.13</artifactId>
             <scope>test</scope>
-            <version>${kafka.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
@@ -284,7 +281,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <fork>true</fork>
                     <mainClass>${main-class}</mainClass>
                 </configuration>
                 <executions>

@@ -19,5 +19,5 @@ data class HistorikkinnslagDto(
     val steg: String? = null,
     val journalpostId: String? = null,
     val dokumentId: String? = null,
-    val opprettetTid: LocalDateTime
+    val opprettetTid: LocalDateTime,
 )
