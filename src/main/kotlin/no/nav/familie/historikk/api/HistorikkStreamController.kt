@@ -16,19 +16,19 @@ class HistorikkStreamController(private val historikkService: HistorikkService) 
 
     @GetMapping(
         "/applikasjon/{applikasjon}/behandling/{behandlingId}",
-        produces = [MediaType.TEXT_EVENT_STREAM_VALUE]
+        produces = [MediaType.TEXT_EVENT_STREAM_VALUE],
     )
     fun hentHistorikkinnslag(
         @PathVariable("applikasjon") applikasjon: String,
-        @PathVariable("behandlingId") behandlingId: String
+        @PathVariable("behandlingId") behandlingId: String,
     ): Ressurs<Flux<HistorikkinnslagDto?>> {
         return Ressurs.success(
             Flux.fromIterable(
                 historikkService.hentHistorikkinnslag(
                     Applikasjon.valueOf(applikasjon),
-                    behandlingId
-                )
-            )
+                    behandlingId,
+                ),
+            ),
         )
         // TODO plugg på eventlistener for kafka meldinger som kommer i ettertid
     }

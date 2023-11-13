@@ -22,7 +22,7 @@ class KafkaConfig(
     @Value("\${KAFKA_SECURITY_PROTOCOL:SSL}") private val kafkaSecurityProtocol: String,
     @Value("\${KAFKA_TRUSTSTORE_PATH}") private val kafkaTruststorePath: String,
     @Value("\${KAFKA_CREDSTORE_PASSWORD}") private val kafkaCredstorePassword: String,
-    @Value("\${KAFKA_KEYSTORE_PATH}") private val kafkaKeystorePath: String
+    @Value("\${KAFKA_KEYSTORE_PATH}") private val kafkaKeystorePath: String,
 ) {
 
     private val JAVA_KEYSTORE = "JKS"
@@ -41,7 +41,7 @@ class KafkaConfig(
         factory.consumerFactory = consumerFactory()
         println(
             "concurrentKafkaListenerContainerFactory - " +
-                "BOOTSTRAP_SERVERS_CONFIG:${factory.consumerFactory.configurationProperties[ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG]} "
+                "BOOTSTRAP_SERVERS_CONFIG:${factory.consumerFactory.configurationProperties[ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG]} ",
         )
         return factory
     }
@@ -53,12 +53,12 @@ class KafkaConfig(
         ConsumerConfig.CLIENT_ID_CONFIG to "consumer-familie-historikk-1",
         ConsumerConfig.AUTO_OFFSET_RESET_CONFIG to "latest",
         CommonClientConfigs.RETRIES_CONFIG to 10,
-        CommonClientConfigs.RETRY_BACKOFF_MS_CONFIG to 100
+        CommonClientConfigs.RETRY_BACKOFF_MS_CONFIG to 100,
 
     ) + commonConfig()
 
     fun commonConfig() = mapOf(
-        ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG to kafkaBrokers
+        ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG to kafkaBrokers,
     ) + securityConfig()
 
     private fun securityConfig() = mapOf(
@@ -70,6 +70,6 @@ class KafkaConfig(
         SslConfigs.SSL_TRUSTSTORE_PASSWORD_CONFIG to kafkaCredstorePassword,
         SslConfigs.SSL_KEYSTORE_LOCATION_CONFIG to kafkaKeystorePath,
         SslConfigs.SSL_KEYSTORE_PASSWORD_CONFIG to kafkaCredstorePassword,
-        SslConfigs.SSL_KEY_PASSWORD_CONFIG to kafkaCredstorePassword
+        SslConfigs.SSL_KEY_PASSWORD_CONFIG to kafkaCredstorePassword,
     )
 }

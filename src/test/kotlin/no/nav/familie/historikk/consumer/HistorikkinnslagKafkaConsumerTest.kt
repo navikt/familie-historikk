@@ -51,7 +51,7 @@ internal class HistorikkinnslagKafkaConsumerTest : OppslagSpringRunnerTest() {
             aktør = Aktør.SAKSBEHANDLER,
             aktørIdent = "Z0000",
             opprettetTidspunkt = opprettetTidspunkt,
-            tittel = "Behandling Opprettet"
+            tittel = "Behandling Opprettet",
         )
 
         kafkaConsumer.listen(
@@ -60,9 +60,9 @@ internal class HistorikkinnslagKafkaConsumerTest : OppslagSpringRunnerTest() {
                 1,
                 0L,
                 behandlingId,
-                objectMapper.writeValueAsString(request)
+                objectMapper.writeValueAsString(request),
             ),
-            ack = acknowledgment
+            ack = acknowledgment,
         )
 
         val historikkinnslagene = historikkinnslagRepository.findByBehandlingId(behandlingId)
@@ -93,9 +93,9 @@ internal class HistorikkinnslagKafkaConsumerTest : OppslagSpringRunnerTest() {
                 1,
                 0L,
                 behandlingId,
-                objectMapper.writeValueAsString(request)
+                objectMapper.writeValueAsString(request),
             ),
-            ack = acknowledgment
+            ack = acknowledgment,
         )
 
         val historikkinnslag = historikkinnslagRepository.findByBehandlingId(behandlingId)

@@ -25,5 +25,5 @@ data class Historikkinnslag(
     val journalpostId: String? = null,
     val dokumentId: String? = null,
     val opprettetAv: String,
-    val opprettetTid: LocalDateTime = LocalDateTime.now().truncatedTo(ChronoUnit.MILLIS)
+    val opprettetTid: LocalDateTime = LocalDateTime.now().truncatedTo(ChronoUnit.MILLIS),
 )

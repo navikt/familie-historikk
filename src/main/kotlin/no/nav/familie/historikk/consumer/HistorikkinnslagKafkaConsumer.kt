@@ -25,7 +25,7 @@ class HistorikkinnslagKafkaConsumer(private val historikkService: HistorikkServi
     @KafkaListener(
         id = "familie-historikk",
         topics = [Constants.topic],
-        containerFactory = "concurrentKafkaListenerContainerFactory"
+        containerFactory = "concurrentKafkaListenerContainerFactory",
     )
     fun listen(consumerRecord: ConsumerRecord<String, String>, ack: Acknowledgment) {
         logger.info("Data mottatt i kafka $consumerRecord")
