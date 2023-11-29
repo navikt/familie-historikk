@@ -23,7 +23,7 @@ spec:
     failureThreshold: 10
   prometheus:
     enabled: true
-    path: /metrics
+    path: /internal/prometheus
   observability:
     tracing:
       enabled: true
