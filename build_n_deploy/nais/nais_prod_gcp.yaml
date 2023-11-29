@@ -4,6 +4,8 @@ metadata:
   name: familie-historikk
   namespace: teamfamilie
   annotations:
+    nais.io/run-as-group: "65532" # nonroot https://github.com/GoogleContainerTools/distroless/issues/443
+    nais.io/run-as-user: "65532" # nonroot https://github.com/GoogleContainerTools/distroless/issues/443
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3000"
   labels:
     team: teamfamilie
@@ -22,6 +24,9 @@ spec:
   prometheus:
     enabled: true
     path: /metrics
+  observability:
+    tracing:
+      enabled: true
   vault:
     enabled: false
   gcp: # Database
@@ -82,3 +87,13 @@ spec:
       value: prod
     - name: APP_VERSION
       value: {{ VERSION }}
+    - name: OTEL_METRICS_EXPORTER
+      value: prometheus
+    - name: OTEL_LOGS_EXPORTER
+      value: none
+    - name: OTEL_TRACES_EXPORTER
+      value: otlp
+    - name: OTEL_EXPORTER_METRICS_ENABLED
+      value: "false"
+    - name: OTEL_METRICS_EXEMPLAR_FILTER
+      value: ALWAYS_ON
