@@ -4,8 +4,8 @@ metadata:
   name: familie-historikk
   namespace: teamfamilie
   annotations:
-    nais.io/run-as-group: "65532"
-    nais.io/run-as-user: "65532"
+    nais.io/run-as-group: "65532" # nonroot https://github.com/GoogleContainerTools/distroless/issues/443
+    nais.io/run-as-user: "65532" # nonroot https://github.com/GoogleContainerTools/distroless/issues/443
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3000"
   labels:
     team: teamfamilie
