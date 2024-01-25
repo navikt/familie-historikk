@@ -11,7 +11,6 @@ metadata:
     team: teamfamilie
 spec:
   image: {{image}}
-  team: teamfamilie
   port: 8050
   liveness:
     path: /internal/status/isAlive
@@ -35,7 +34,7 @@ spec:
         name: familie-historikk
         diskAutoresize: true
         highAvailability: true
-        autoBackupTime: "03:00"
+        autoBackupHour: 3
         databases:
           - name: familie-historikk
             envVarPrefix: DB

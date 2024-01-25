@@ -11,7 +11,6 @@ metadata:
     team: teamfamilie
 spec:
   image: {{image}}
-  team: teamfamilie
   port: 8050
   liveness:
     path: /internal/status/isAlive
@@ -33,7 +32,7 @@ spec:
     sqlInstances:
       - type: POSTGRES_14
         name: familie-historikk
-        autoBackupTime: "03:00"
+        autoBackupHour: 3
         databases:
           - name: familie-historikk
             envVarPrefix: DB
