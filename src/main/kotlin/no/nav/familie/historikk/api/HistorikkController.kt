@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController
 @ProtectedWithClaims(issuer = "azuread")
 @Validated
 class HistorikkController(private val historikkService: HistorikkService) {
-
     @GetMapping(
         "/applikasjon/{applikasjon}/behandling/{behandlingId}",
         produces = [MediaType.APPLICATION_JSON_VALUE],

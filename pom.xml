@@ -11,7 +11,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.5</version>
+        <version>3.2.2</version>
     </parent>
 
     <properties>
@@ -21,13 +21,13 @@
         <java.version>21</java.version>
         <jvmTarget>21</jvmTarget>
         <main-class>no.nav.familie.historikk.LauncherKt</main-class>
-        <kotlin.version>1.9.21</kotlin.version>
-        <felles.version>2.20231023162434_fa320ce</felles.version>
+        <kotlin.version>1.9.22</kotlin.version>
+        <felles.version>2.20240123084817_35f03aa</felles.version>
         <common-java-modules.version>2.2021.03.26_09.45-569ba329264c</common-java-modules.version>
         <kontrakter.version>3.0_20231109091547_fd2cae7</kontrakter.version>
-        <nav.security.version>2.0.5</nav.security.version>
-        <mockk.version>1.13.8</mockk.version>
-        <jakarta-servlet.version>5.0.0</jakarta-servlet.version>
+        <nav.security.version>3.2.0</nav.security.version>
+        <mockk.version>1.13.9</mockk.version>
+        <jakarta-servlet.version>6.0.0</jakarta-servlet.version>
         <!--suppress UnresolvedMavenProperty  Ligger som secret i github-->
         <sonar.projectKey>${SONAR_PROJECTKEY}</sonar.projectKey>
         <sonar.organization>navit</sonar.organization>
@@ -35,8 +35,8 @@
         <sonar.coverage.exclusions>**/config/FlywayConfig.kt</sonar.coverage.exclusions>
         <!--suppress UnresolvedMavenProperty Ligger som secret i github-->
         <sonar.login>${SONAR_LOGIN}</sonar.login>
-        <spring.cloud-contract>4.0.4</spring.cloud-contract>
-        <testcontainers.version>1.19.1</testcontainers.version>
+        <spring.cloud-contract>4.1.0</spring.cloud-contract>
+        <testcontainers.version>1.19.3</testcontainers.version>
         <springdoc.version>1.7.0</springdoc.version>
     </properties>
     <repositories>
@@ -106,7 +106,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.6.0</version>
+            <version>42.7.1</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -125,9 +125,19 @@
         <!-- NAV interne avhengigheter-->
         <dependency>
             <groupId>no.nav.security</groupId>
-            <artifactId>token-validation-test-support</artifactId>
+            <artifactId>token-validation-spring-test</artifactId>
             <version>${nav.security.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>no.nav.security</groupId>
+            <artifactId>token-client-core</artifactId>
+            <version>${nav.security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>no.nav.security</groupId>
+            <artifactId>token-client-spring</artifactId>
+            <version>${nav.security.version}</version>
         </dependency>
         <dependency>
             <groupId>no.nav.familie.felles</groupId>
@@ -351,9 +361,9 @@
                 </executions>
                 <dependencies>
                     <dependency>
-                        <groupId>com.pinterest</groupId>
-                        <artifactId>ktlint</artifactId>
-                        <version>0.50.0</version>
+                        <groupId>com.pinterest.ktlint</groupId>
+                        <artifactId>ktlint-cli</artifactId>
+                        <version>1.1.1</version>
                     </dependency>
                     <!-- additional 3rd party ruleset(s) can be specified here -->
                 </dependencies>

@@ -22,11 +22,10 @@ import java.time.Duration
 import java.time.temporal.ChronoUnit
 
 @SpringBootConfiguration
-@ComponentScan(ApplicationConfig.pakkenavn, "no.nav.familie.sikkerhet")
+@ComponentScan(ApplicationConfig.PAKKENAVN, "no.nav.familie.sikkerhet")
 @EnableJwtTokenValidation(ignore = ["org.springframework", "org.springdoc"])
 @ConfigurationPropertiesScan
 class ApplicationConfig {
-
     @Bean
     fun servletWebServerFactory(): ServletWebServerFactory {
         val serverFactory = JettyServletWebServerFactory()
@@ -75,8 +74,7 @@ class ApplicationConfig {
     fun kotlinModule(): KotlinModule = KotlinModule()
 
     companion object {
-
         private val log = LoggerFactory.getLogger(ApplicationConfig::class.java)
-        const val pakkenavn = "no.nav.familie.historikk"
+        const val PAKKENAVN = "no.nav.familie.historikk"
     }
 }
