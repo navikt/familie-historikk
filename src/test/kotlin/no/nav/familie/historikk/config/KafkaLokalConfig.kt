@@ -15,6 +15,7 @@ import org.springframework.kafka.core.ConsumerFactory
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory
 import org.springframework.kafka.listener.ContainerProperties
 import org.springframework.kafka.test.EmbeddedKafkaBroker
+import org.springframework.kafka.test.EmbeddedKafkaZKBroker
 
 @Configuration
 @EnableKafka
@@ -23,11 +24,15 @@ class KafkaLokalConfig {
 
     @Bean
     fun broker(): EmbeddedKafkaBroker {
-        return EmbeddedKafkaBroker(1)
+        return EmbeddedKafkaZKBroker(1)
             .kafkaPorts(9092)
-            .brokerProperty("listeners", "PLAINTEXT://localhost:9092,REMOTE://localhost:9093")
-            .brokerProperty("advertised.listeners", "PLAINTEXT://localhost:9092,REMOTE://localhost:9093")
-            .brokerProperty("listener.security.protocol.map", "PLAINTEXT:PLAINTEXT,REMOTE:PLAINTEXT")
+            .brokerProperties(
+                mapOf(
+                    Pair("listeners", "PLAINTEXT://localhost:9092,REMOTE://localhost:9093"),
+                    Pair("advertised.listeners", "PLAINTEXT://localhost:9092,REMOTE://localhost:9093"),
+                    Pair("listener.security.protocol.map", "PLAINTEXT:PLAINTEXT,REMOTE:PLAINTEXT"),
+                ),
+            )
             .brokerListProperty("spring.kafka.bootstrap-servers")
     }
 
