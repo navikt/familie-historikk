@@ -16,7 +16,6 @@ import javax.sql.DataSource
 @EnableJdbcAuditing
 @EnableJdbcRepositories("no.nav.familie.historikk")
 class DatabaseConfig : AbstractJdbcConfiguration() {
-
     @Bean
     fun operations(dataSource: DataSource): NamedParameterJdbcOperations {
         return NamedParameterJdbcTemplate(dataSource)

@@ -13,7 +13,6 @@ import reactor.core.publisher.Flux
 @RestController
 @RequestMapping("/api/historikk/stream")
 class HistorikkStreamController(private val historikkService: HistorikkService) {
-
     @GetMapping(
         "/applikasjon/{applikasjon}/behandling/{behandlingId}",
         produces = [MediaType.TEXT_EVENT_STREAM_VALUE],

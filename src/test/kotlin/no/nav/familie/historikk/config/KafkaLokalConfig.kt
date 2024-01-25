@@ -21,7 +21,6 @@ import org.springframework.kafka.test.EmbeddedKafkaZKBroker
 @EnableKafka
 @Profile("local", "integrasjonstest")
 class KafkaLokalConfig {
-
     @Bean
     fun broker(): EmbeddedKafkaBroker {
         return EmbeddedKafkaZKBroker(1)
@@ -38,7 +37,7 @@ class KafkaLokalConfig {
 
     @Bean
     fun topic(): NewTopic {
-        return TopicBuilder.name(Constants.topic).partitions(1).replicas(1).build()
+        return TopicBuilder.name(Constants.TOPIC).partitions(1).replicas(1).build()
     }
 
     @Bean
@@ -62,14 +61,15 @@ class KafkaLokalConfig {
         return factory
     }
 
-    fun consumerConfigs() = mapOf(
-        ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG to StringDeserializer::class.java,
-        ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG to StringDeserializer::class.java,
-        ConsumerConfig.GROUP_ID_CONFIG to "familie-historikk",
-        ConsumerConfig.CLIENT_ID_CONFIG to "consumer-familie-historikk-1",
-        ConsumerConfig.AUTO_OFFSET_RESET_CONFIG to "latest",
-        CommonClientConfigs.RETRIES_CONFIG to 10,
-        CommonClientConfigs.RETRY_BACKOFF_MS_CONFIG to 100,
-        ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG to "localhost:9092",
-    )
+    fun consumerConfigs() =
+        mapOf(
+            ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG to StringDeserializer::class.java,
+            ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG to StringDeserializer::class.java,
+            ConsumerConfig.GROUP_ID_CONFIG to "familie-historikk",
+            ConsumerConfig.CLIENT_ID_CONFIG to "consumer-familie-historikk-1",
+            ConsumerConfig.AUTO_OFFSET_RESET_CONFIG to "latest",
+            CommonClientConfigs.RETRIES_CONFIG to 10,
+            CommonClientConfigs.RETRY_BACKOFF_MS_CONFIG to 100,
+            ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG to "localhost:9092",
+        )
 }

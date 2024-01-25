@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Configuration
 
 @Configuration
 class SwaggerConfig {
-
     @Bean
     fun historikkApi(): OpenAPI {
         return OpenAPI().info(Info().title("Historikk Api").version("V1"))

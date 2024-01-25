@@ -18,7 +18,6 @@ import java.util.concurrent.TimeUnit
 import kotlin.test.assertEquals
 
 internal class KafkaProducerTest : OppslagSpringRunnerTest() {
-
     @Autowired
     private lateinit var kafkaTemplate: KafkaTemplate<String, String>
 
@@ -28,22 +27,24 @@ internal class KafkaProducerTest : OppslagSpringRunnerTest() {
     @Test
     fun `send melding til kafka`() {
         val behandlingId = UUID.randomUUID().toString()
-        val request = OpprettHistorikkinnslagRequest(
-            behandlingId = behandlingId,
-            eksternFagsakId = UUID.randomUUID().toString(),
-            fagsystem = Fagsystem.BA,
-            applikasjon = Applikasjon.FAMILIE_TILBAKE,
-            type = Historikkinnslagstype.HENDELSE,
-            aktør = Aktør.SAKSBEHANDLER,
-            aktørIdent = "Z0000",
-            opprettetTidspunkt = LocalDateTime.now(),
-            tittel = "Behandling Opprettet",
-        )
-        val producerRecord = ProducerRecord(
-            Constants.topic,
-            behandlingId,
-            objectMapper.writeValueAsString(request),
-        )
+        val request =
+            OpprettHistorikkinnslagRequest(
+                behandlingId = behandlingId,
+                eksternFagsakId = UUID.randomUUID().toString(),
+                fagsystem = Fagsystem.BA,
+                applikasjon = Applikasjon.FAMILIE_TILBAKE,
+                type = Historikkinnslagstype.HENDELSE,
+                aktør = Aktør.SAKSBEHANDLER,
+                aktørIdent = "Z0000",
+                opprettetTidspunkt = LocalDateTime.now(),
+                tittel = "Behandling Opprettet",
+            )
+        val producerRecord =
+            ProducerRecord(
+                Constants.TOPIC,
+                behandlingId,
+                objectMapper.writeValueAsString(request),
+            )
         kafkaTemplate.send(producerRecord)
 
         kafkaConsumer.latch.await(1000, TimeUnit.MILLISECONDS)

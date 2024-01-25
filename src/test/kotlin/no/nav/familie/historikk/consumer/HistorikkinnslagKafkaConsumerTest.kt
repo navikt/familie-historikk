@@ -23,7 +23,6 @@ import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 internal class HistorikkinnslagKafkaConsumerTest : OppslagSpringRunnerTest() {
-
     @Autowired
     private lateinit var kafkaConsumer: HistorikkinnslagKafkaConsumer
 
@@ -42,26 +41,28 @@ internal class HistorikkinnslagKafkaConsumerTest : OppslagSpringRunnerTest() {
     fun `listen skal lagre historikkinnslag når mottatt gyldig melding`() {
         val behandlingId = UUID.randomUUID().toString()
         val opprettetTidspunkt = LocalDateTime.now()
-        val request = OpprettHistorikkinnslagRequest(
-            behandlingId = behandlingId,
-            eksternFagsakId = UUID.randomUUID().toString(),
-            fagsystem = Fagsystem.BA,
-            applikasjon = Applikasjon.FAMILIE_TILBAKE,
-            type = Historikkinnslagstype.HENDELSE,
-            aktør = Aktør.SAKSBEHANDLER,
-            aktørIdent = "Z0000",
-            opprettetTidspunkt = opprettetTidspunkt,
-            tittel = "Behandling Opprettet",
-        )
+        val request =
+            OpprettHistorikkinnslagRequest(
+                behandlingId = behandlingId,
+                eksternFagsakId = UUID.randomUUID().toString(),
+                fagsystem = Fagsystem.BA,
+                applikasjon = Applikasjon.FAMILIE_TILBAKE,
+                type = Historikkinnslagstype.HENDELSE,
+                aktør = Aktør.SAKSBEHANDLER,
+                aktørIdent = "Z0000",
+                opprettetTidspunkt = opprettetTidspunkt,
+                tittel = "Behandling Opprettet",
+            )
 
         kafkaConsumer.listen(
-            consumerRecord = ConsumerRecord(
-                Constants.topic,
-                1,
-                0L,
-                behandlingId,
-                objectMapper.writeValueAsString(request),
-            ),
+            consumerRecord =
+                ConsumerRecord(
+                    Constants.TOPIC,
+                    1,
+                    0L,
+                    behandlingId,
+                    objectMapper.writeValueAsString(request),
+                ),
             ack = acknowledgment,
         )
 
@@ -88,13 +89,14 @@ internal class HistorikkinnslagKafkaConsumerTest : OppslagSpringRunnerTest() {
         val behandlingId = UUID.randomUUID().toString()
         val request = "testverdi"
         kafkaConsumer.listen(
-            consumerRecord = ConsumerRecord(
-                Constants.topic,
-                1,
-                0L,
-                behandlingId,
-                objectMapper.writeValueAsString(request),
-            ),
+            consumerRecord =
+                ConsumerRecord(
+                    Constants.TOPIC,
+                    1,
+                    0L,
+                    behandlingId,
+                    objectMapper.writeValueAsString(request),
+                ),
             ack = acknowledgment,
         )
 

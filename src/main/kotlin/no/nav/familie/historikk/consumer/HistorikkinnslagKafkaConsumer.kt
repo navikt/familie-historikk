@@ -16,7 +16,6 @@ import java.util.concurrent.CountDownLatch
 @Service
 @Profile("!e2e")
 class HistorikkinnslagKafkaConsumer(private val historikkService: HistorikkService) {
-
     private val logger = LoggerFactory.getLogger(this::class.java)
     private val secureLogger = LoggerFactory.getLogger("secureLogger")
 
@@ -24,10 +23,13 @@ class HistorikkinnslagKafkaConsumer(private val historikkService: HistorikkServi
 
     @KafkaListener(
         id = "familie-historikk",
-        topics = [Constants.topic],
+        topics = [Constants.TOPIC],
         containerFactory = "concurrentKafkaListenerContainerFactory",
     )
-    fun listen(consumerRecord: ConsumerRecord<String, String>, ack: Acknowledgment) {
+    fun listen(
+        consumerRecord: ConsumerRecord<String, String>,
+        ack: Acknowledgment,
+    ) {
         logger.info("Data mottatt i kafka $consumerRecord")
         secureLogger.info("Data mottatt i kafka $consumerRecord")
         val data: String = consumerRecord.value()

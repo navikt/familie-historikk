@@ -10,29 +10,32 @@ import org.springframework.transaction.annotation.Transactional
 
 @Service
 class HistorikkService(private val historikkinnslagRepository: HistorikkinnslagRepository) {
-
     @Transactional
     fun lagreHistorikkinnslag(request: OpprettHistorikkinnslagRequest) {
-        val historikkinnslag = Historikkinnslag(
-            behandlingId = request.behandlingId,
-            eksternFagsakId = request.eksternFagsakId,
-            fagsystem = request.fagsystem,
-            applikasjon = request.applikasjon,
-            aktør = request.aktør,
-            type = request.type,
-            tittel = request.tittel,
-            tekst = request.tekst,
-            steg = request.steg,
-            journalpostId = request.journalpostId,
-            dokumentId = request.dokumentId,
-            opprettetAv = request.aktørIdent,
-            opprettetTid = request.opprettetTidspunkt,
-        )
+        val historikkinnslag =
+            Historikkinnslag(
+                behandlingId = request.behandlingId,
+                eksternFagsakId = request.eksternFagsakId,
+                fagsystem = request.fagsystem,
+                applikasjon = request.applikasjon,
+                aktør = request.aktør,
+                type = request.type,
+                tittel = request.tittel,
+                tekst = request.tekst,
+                steg = request.steg,
+                journalpostId = request.journalpostId,
+                dokumentId = request.dokumentId,
+                opprettetAv = request.aktørIdent,
+                opprettetTid = request.opprettetTidspunkt,
+            )
         historikkinnslagRepository.insert(historikkinnslag)
     }
 
     @Transactional(readOnly = true)
-    fun hentHistorikkinnslag(applikasjon: Applikasjon, behandlingId: String): List<HistorikkinnslagDto> {
+    fun hentHistorikkinnslag(
+        applikasjon: Applikasjon,
+        behandlingId: String,
+    ): List<HistorikkinnslagDto> {
         val historikkinnslag = historikkinnslagRepository.findByBehandlingIdAndApplikasjon(behandlingId, applikasjon)
         return historikkinnslag.map {
             HistorikkinnslagDto(

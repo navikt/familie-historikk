@@ -24,7 +24,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension
 @SpringBootTest(classes = [LauncherLocal::class], webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("integrasjonstest", "mock-oauth", "mock-pdl", "mock-oppgave")
 abstract class OppslagSpringRunnerTest {
-
     private final val listAppender = initLoggingEventListAppender()
     protected var loggingEvents: MutableList<ILoggingEvent> = listAppender.list
     protected val restTemplate = TestRestTemplate()
@@ -63,7 +62,10 @@ abstract class OppslagSpringRunnerTest {
         return LOCALHOST + getPort() + uri
     }
 
-    protected fun url(baseUrl: String, uri: String): String {
+    protected fun url(
+        baseUrl: String,
+        uri: String,
+    ): String {
         return baseUrl + uri
     }
 
@@ -72,8 +74,8 @@ abstract class OppslagSpringRunnerTest {
     }
 
     companion object {
-
         private const val LOCALHOST = "http://localhost:"
+
         protected fun initLoggingEventListAppender(): ListAppender<ILoggingEvent> {
             val listAppender = ListAppender<ILoggingEvent>()
             listAppender.start()
