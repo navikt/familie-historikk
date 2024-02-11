@@ -24,7 +24,7 @@
         <kotlin.version>1.9.22</kotlin.version>
         <felles.version>2.20240123084817_35f03aa</felles.version>
         <common-java-modules.version>2.2021.03.26_09.45-569ba329264c</common-java-modules.version>
-        <kontrakter.version>3.0_20240116082529_ee44807</kontrakter.version>
+        <kontrakter.version>3.0_20240207140632_bf1f3eb</kontrakter.version>
         <nav.security.version>3.2.0</nav.security.version>
         <mockk.version>1.13.9</mockk.version>
         <jakarta-servlet.version>6.0.0</jakarta-servlet.version>
@@ -36,7 +36,7 @@
         <!--suppress UnresolvedMavenProperty Ligger som secret i github-->
         <sonar.login>${SONAR_LOGIN}</sonar.login>
         <spring.cloud-contract>4.1.1</spring.cloud-contract>
-        <testcontainers.version>1.19.3</testcontainers.version>
+        <testcontainers.version>1.19.5</testcontainers.version>
         <springdoc.version>1.7.0</springdoc.version>
     </properties>
     <repositories>
