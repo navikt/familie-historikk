@@ -11,7 +11,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.2</version>
+        <version>3.2.3</version>
     </parent>
 
     <properties>
@@ -22,14 +22,14 @@
         <jvmTarget>21</jvmTarget>
         <main-class>no.nav.familie.historikk.LauncherKt</main-class>
         <kotlin.version>1.9.22</kotlin.version>
-        <felles.version>2.20240123084817_35f03aa</felles.version>
+        <felles.version>2.20240221144438_022879d_token-support-4</felles.version>
         <common-java-modules.version>2.2021.03.26_09.45-569ba329264c</common-java-modules.version>
-        <kontrakter.version>3.0_20240116082529_ee44807</kontrakter.version>
+        <kontrakter.version>3.0_20240215101759_cea211f</kontrakter.version>
         <nav.security.version>3.2.0</nav.security.version>
         <mockk.version>1.13.9</mockk.version>
         <jakarta-servlet.version>6.0.0</jakarta-servlet.version>
         <spring.cloud-contract>4.1.1</spring.cloud-contract>
-        <testcontainers.version>1.19.3</testcontainers.version>
+        <testcontainers.version>1.19.6</testcontainers.version>
         <springdoc.version>1.7.0</springdoc.version>
     </properties>
     <repositories>
