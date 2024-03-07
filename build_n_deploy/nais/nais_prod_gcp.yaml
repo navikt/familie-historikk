@@ -74,7 +74,7 @@ spec:
       memory: 2Gi
     requests:
       memory: 1Gi
-      cpu: 500m
+      cpu: 50m
   ingresses:
     - https://familie-historikk.intern.nav.no
   secureLogs:
