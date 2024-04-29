@@ -61,6 +61,8 @@ spec:
       rules:
         - application: familie-tilbake-frontend
           namespace: teamfamilie
+        - application: familie-tilbake-frontend-lokal
+          namespace: teamfamilie
   replicas:
     min: 2
     max: 4
